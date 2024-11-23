@@ -1,0 +1,168 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: #f0f0f0;
+
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.treecontainer {
+  width: 700px;
+  height: 400px;
+  background-color: #fff;
+  background-image: url("./assets/tree.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  margin: auto;
+}
+
+.person1 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:260px; 
+  left: 370px;
+}
+
+.person2 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:260px; 
+  left: 300px;
+}
+
+.person3 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:160px; 
+  left: 385px;
+}
+
+.person4 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:180px; 
+  left: 340px;
+  /* top:160px; 
+  left: 220px; */
+}
+
+.person5 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:160px; 
+  left: 290px;
+  /* top:160px; 
+  left: 462px; */
+}
+
+.person6 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:110px; 
+  left: 250px;
+}
+
+.person7 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:110px; 
+  left: 440px;
+}
+
+.person8 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:96px; 
+  left: 335px;
+}
+
+.person9 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:70px; 
+  left: 270px;
+}
+
+.person10 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:70px; 
+  left: 400px;
+}
+
+.parent1 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:320px; 
+  left: 400px;
+}
+
+.parent2 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:320px; 
+  left: 290px;
+}
