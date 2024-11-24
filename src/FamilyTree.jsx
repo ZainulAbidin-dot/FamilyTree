@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class Person {
-  constructor(name, gender, image) {
+  constructor(name, gender, image, relationType) {
     this.name = name;
     this.gender = gender;
     this.image = image || "https://randomuser.me/api/portraits/men/64.jpg";
+    this.relationType = relationType || 'root';
     this.partner = null;
     this.parents = [];
     this.children = [];
@@ -17,39 +18,40 @@ class Person {
 
   addChild(child) {
     this.children.push(child);
-    child.addParent(this);  // Ensure mutual reference with parent
+    // child.addParent(this);  // Ensure mutual reference with parent
   }
 
   addParent(parent) {
     this.parents.push(parent);
+    // parent.addChild(this);
   }
 
   toJSON() {
     const { partner, ...rest } = this;
     return {
-      ...rest,
-      partner: partner
-        ? {
-            name: partner.name,
-            gender: partner.gender,
-            image: partner.image,
-          }
-        : null,
-      children: this.children.map((child) => child.toJSON()),
-      parents: this.parents.map((parent) => parent.toJSON()),
+      // ...rest,
+      // partner: partner
+      //   ? {
+      //       name: partner.name,
+      //       gender: partner.gender,
+      //       image: partner.image,
+      //     }
+      //   : null,
+      // children: this.children.map((child) => child.toJSON()),
+      // parents: this.parents.map((parent) => parent.toJSON()),
     };
   }
 }
 
 function FamilyTreeApp() {
   const [rootPerson, setRootPerson] = useState(null);
-  const [allPersons, setAllPersons] = useState([]);
+  let [allPersons, setAllPersons] = useState([]);
   const [selectedPersonName, setSelectedPersonName] = useState("");
   const [partnerModalVisible, setPartnerModalVisible] = useState(false);
   const [childModalVisible, setChildModalVisible] = useState(false);
   const [parentModalVisible, setParentModalVisible] = useState(false);  // For adding parent
   const [newPartner, setNewPartner] = useState({ name: "", gender: "", image: "" });
-  const [newChild, setNewChild] = useState({ name: "", gender: "" });
+  const [newChild, setNewChild] = useState({ name: "", gender: "", image: "" });
   const [newParent, setNewParent] = useState({ name: "", gender: "", image: "" });
 
   const handleCreateRootPerson = (name, gender, image) => {
@@ -59,8 +61,8 @@ function FamilyTreeApp() {
     setAllPersons([person]);
   };
 
-  const handleAddPartner = (name, gender, image) => {
-    const partner = new Person(name, gender, image);
+  const handleAddPartner = (name, gender, image, relationType = 'partner' ) => {
+    const partner = new Person(name, gender, image, relationType);
     const selectedPerson = allPersons.find((person) => person.name === selectedPersonName);
     
     if (selectedPerson) {
@@ -70,8 +72,8 @@ function FamilyTreeApp() {
     setPartnerModalVisible(false);
   };
 
-  const handleAddChild = (name, gender) => {
-    const child = new Person(name, gender);
+  const handleAddChild = (name, gender, image, relationType = 'child') => {
+    const child = new Person(name, gender, image, relationType);
     const selectedPerson = allPersons.find((person) => person.name === selectedPersonName);
     if (selectedPerson) {
       selectedPerson.addChild(child);
@@ -80,8 +82,8 @@ function FamilyTreeApp() {
     setChildModalVisible(false);
   };
 
-  const handleAddParent = (name, gender, image) => {
-    const parent = new Person(name, gender, image);
+  const handleAddParent = (name, gender, image, relationType = 'parent') => {
+    const parent = new Person(name, gender, image, relationType);
     const selectedPerson = allPersons.find((person) => person.name === selectedPersonName);
     if (selectedPerson) {
       selectedPerson.addParent(parent);
@@ -104,21 +106,28 @@ function FamilyTreeApp() {
 
   const handleImageUpload = (e, type) => {
     const file = e.target.files[0];
+    console.log(file,type);
+    
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
         if (type === "root") {
-          setNewPartner({ ...newPartner, image: reader.result });
+          setNewPartner({ ...newPartner, image: reader.result});
         } else if (type === "partner") {
-          setNewPartner({ ...newPartner, image: reader.result });
+          setNewPartner({ ...newPartner, image: reader.result});
         } else if (type === "parent") {
           setNewParent({ ...newParent, image: reader.result });
+        } else if (type === "child") {
+          setNewChild({ ...newChild, image: reader.result});
         }
       };
       reader.readAsDataURL(file);
     }
   };
 
+  allPersons = allPersons.filter(person => person.relationType !== 'parent' && person.relationType !== 'partner')
+  console.log(allPersons);
+  
   return (
     <>
       <div className="container my-5">
@@ -142,8 +151,9 @@ function FamilyTreeApp() {
               <select
                 className="form-select"
                 onChange={(e) => setNewPartner({ ...newPartner, gender: e.target.value })}
+                defaultValue=""
               >
-                <option value="" disabled selected>
+                <option value="" disabled>
                   Select Gender
                 </option>
                 <option value="M">Male</option>
@@ -184,19 +194,19 @@ function FamilyTreeApp() {
               </select>
             </div>
             <button
-              className="btn btn-success my-5"
+              className="btn btn-success my-5 mx-2"
               onClick={() => setPartnerModalVisible(true)}
             >
               Add Partner
             </button>
             <button
-              className="btn btn-info my-5"
+              className="btn btn-info my-5 mx-2"
               onClick={() => setChildModalVisible(true)}
             >
               Add Child
             </button>
             <button
-              className="btn btn-warning my-5"
+              className="btn btn-warning my-5 mx-2"
               onClick={() => setParentModalVisible(true)}  // Show parent modal
             >
               Add Parent
@@ -207,7 +217,7 @@ function FamilyTreeApp() {
         {/* Family Tree Display */}
         <div id="familyTreeDisplay" className="border p-3">
           <h4>Family Tree:</h4>
-          <pre>{printFamilyTree()}</pre>
+          {/* <pre>{printFamilyTree()}</pre> */}
         </div>
 
         {/* Partner Modal */}
@@ -317,6 +327,15 @@ function FamilyTreeApp() {
                       <option value="F">Female</option>
                     </select>
                   </div>
+                  <div className="mb-3">
+                    <label className="form-label">Image Upload</label>
+                    <input
+                      type="file"
+                      className="form-control"
+                      accept="image/*"
+                      onChange={(e) => handleImageUpload(e, "child")}
+                    />
+                  </div>
                 </div>
                 <div className="modal-footer">
                   <button
@@ -329,7 +348,7 @@ function FamilyTreeApp() {
                   <button
                     type="button"
                     className="btn btn-primary"
-                    onClick={() => handleAddChild(newChild.name, newChild.gender)}
+                    onClick={() => handleAddChild(newChild.name, newChild.gender, newChild.image)}
                   >
                     Add Child
                   </button>
@@ -409,47 +428,51 @@ function FamilyTreeApp() {
           </div>
         )}
       </div>
-      
-                       
+
       {/* Picture of tree with family members on the branches */}
-      <div className="treecontainer">
-            {allPersons.length > 0 && (
-                  <img className='person1' src={allPersons.length > 0 && allPersons[0].image ? allPersons[0].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
-            ) }
-            {allPersons.length > 0 && allPersons[0]?.partner?.image && (
-                  <img className='person2' src={allPersons.length > 0 && allPersons[0]?.partner?.image ? allPersons[0].partner.image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
-            )}
-            {allPersons.length > 0 && allPersons[0]?.children[0]?.image && (
-                  <img className='person3' src={allPersons.length > 0 && allPersons[0]?.children[0]?.image ? allPersons[0].children[0].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
-            )}
-            {allPersons.length > 0 && allPersons[0]?.children[1]?.image && (
-                  <img className='person4' src={allPersons.length > 0 && allPersons[0]?.children[1]?.image ? allPersons[0].children[1].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
-            )}
-            {allPersons.length > 0 && allPersons[0]?.children[1]?.image && (
-                  <img className='person5' src={allPersons.length > 0 && allPersons[0]?.children[1]?.image ? allPersons[0].children[1].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
-            )}
-            {allPersons.length > 0 && allPersons[0]?.children[1]?.image && (
-                  <img className='person6' src={allPersons.length > 0 && allPersons[0]?.children[1]?.image ? allPersons[0].children[1].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
-            )}
-            {allPersons.length > 0 && allPersons[0]?.children[1]?.image && (
-                  <img className='person7' src={allPersons.length > 0 && allPersons[0]?.children[1]?.image ? allPersons[0].children[1].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
-            )}
-            {allPersons.length > 0 && allPersons[0]?.children[1]?.image && (
-                  <img className='person8' src={allPersons.length > 0 && allPersons[0]?.children[1]?.image ? allPersons[0].children[1].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
-            )}
-            {allPersons.length > 0 && allPersons[0]?.children[1]?.image && (
-                  <img className='person9' src={allPersons.length > 0 && allPersons[0]?.children[1]?.image ? allPersons[0].children[1].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
-            )}
-            {allPersons.length > 0 && allPersons[0]?.children[1]?.image && (
-                  <img className='person10' src={allPersons.length > 0 && allPersons[0]?.children[1]?.image ? allPersons[0].children[1].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
-            )}
-            {allPersons.length > 0 && allPersons[0]?.parents[0]?.image && (
-                  <img className='parent1' src={allPersons.length > 0 && allPersons[0]?.parents[0]?.image ? allPersons[0].parents[0].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
-            )}
-            {allPersons.length > 0 && allPersons[0]?.parents[0]?.image && (
-                  <img className='parent2' src={allPersons.length > 0 && allPersons[0]?.parents[1]?.image ? allPersons[0].parents[0].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
-            )}
-      </div>
+      {
+        allPersons.length > 0 ? allPersons.map(person => (
+                  
+          <div className="treecontainer d-flex flex-row">
+                {person && (
+                      <img className='person1' src={allPersons.length > 0 && person.image ? person.image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
+                ) }
+                {person?.partner?.image && (
+                      <img className='person2' src={person?.partner?.image ? person.partner.image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
+                )}
+                {person?.children[0]?.image && (
+                      <img className='person3' src={person?.children[0]?.image ? person.children[0].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
+                )}
+                {person?.children[1]?.image && (
+                      <img className='person4' src={person?.children[1]?.image ? person.children[1].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
+                )}
+                {person?.children[2]?.image && (
+                      <img className='person5' src={person?.children[1]?.image ? person.children[1].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
+                )}
+                {person?.children[3]?.image && (
+                      <img className='person6' src={person?.children[1]?.image ? person.children[1].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
+                )}
+                {person?.children[4]?.image && (
+                      <img className='person7' src={person?.children[1]?.image ? person.children[1].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
+                )}
+                {person?.children[5]?.image && (
+                      <img className='person8' src={person?.children[1]?.image ? person.children[1].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
+                )}
+                {person?.children[6]?.image && (
+                      <img className='person9' src={person?.children[1]?.image ? person.children[1].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
+                )}
+                {person?.children[7]?.image && (
+                      <img className='person10' src={person?.children[1]?.image ? person.children[1].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
+                )}
+                {person?.parents[0]?.image && (
+                      <img className='parent1' src={person?.parents[0]?.image ? person.parents[0].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
+                )}
+                {person?.parents[1]?.image && (
+                      <img className='parent2' src={person?.parents[1]?.image ? person.parents[1].image : 'https://randomuser.me/api/portraits/women/64.jpg'} alt="" />
+                )}
+          </div>
+        )) : (null)
+      }
     </>
   );
 }

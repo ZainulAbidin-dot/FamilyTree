@@ -9,7 +9,7 @@
 
 .logo {
   height: 6em;
-  padding: 1.5em;
+  padding: 1.5em; 
   will-change: filter;
   transition: filter 300ms;
 }
@@ -61,7 +61,7 @@
   height: 35px; 
   border-radius: 50%; 
   top:260px; 
-  left: 370px;
+  left: 360px;
 }
 
 .person2 {
@@ -70,7 +70,7 @@
   height: 35px; 
   border-radius: 50%; 
   top:260px; 
-  left: 300px;
+  left: 310px;
 }
 
 .person3 {
