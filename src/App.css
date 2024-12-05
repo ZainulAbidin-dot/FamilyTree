@@ -1,61 +1,29 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
-  background-color: #f0f0f0;
 
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em; 
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.carousel {
+  max-width: 700px;
+  margin: auto;  
 }
 
 .treecontainer {
-  width: 700px;
-  height: 400px;
-  background-color: #fff;
+  min-width: 700px;
+  max-width: 700px;
+  min-height: 400px;
+  max-height: 400px;
+  background-color: #ede9e9;
+  /* background-color: #f7f7f7; */
   background-image: url("./assets/tree.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  margin: auto;
+  margin: auto;  
 }
 
-.person1 {
+.personpatriarch {
   position: absolute; 
   width: 35px; 
   height: 35px; 
@@ -64,7 +32,7 @@
   left: 360px;
 }
 
-.person2 {
+.personmatriarch {
   position: absolute; 
   width: 35px; 
   height: 35px; 
@@ -73,7 +41,7 @@
   left: 310px;
 }
 
-.person3 {
+.person1 {
   position: absolute; 
   width: 35px; 
   height: 35px; 
@@ -82,7 +50,7 @@
   left: 385px;
 }
 
-.person4 {
+.person2 {
   position: absolute; 
   width: 35px; 
   height: 35px; 
@@ -93,7 +61,7 @@
   left: 220px; */
 }
 
-.person5 {
+.person3 {
   position: absolute; 
   width: 35px; 
   height: 35px; 
@@ -104,7 +72,7 @@
   left: 462px; */
 }
 
-.person6 {
+.person4 {
   position: absolute; 
   width: 35px; 
   height: 35px; 
@@ -113,7 +81,7 @@
   left: 250px;
 }
 
-.person7 {
+.person5 {
   position: absolute; 
   width: 35px; 
   height: 35px; 
@@ -122,7 +90,7 @@
   left: 440px;
 }
 
-.person8 {
+.person6 {
   position: absolute; 
   width: 35px; 
   height: 35px; 
@@ -131,7 +99,7 @@
   left: 335px;
 }
 
-.person9 {
+.person7 {
   position: absolute; 
   width: 35px; 
   height: 35px; 
@@ -140,13 +108,112 @@
   left: 270px;
 }
 
-.person10 {
+.person8 {
   position: absolute; 
   width: 35px; 
   height: 35px; 
   border-radius: 50%; 
   top:70px; 
   left: 400px;
+}
+
+.person9 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:70px; 
+  left: 200px;
+}
+
+.person10 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:70px; 
+  left: 500px;
+}
+
+.person11 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:110px; 
+  left: 160px;
+}
+
+.person12 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:110px; 
+  left: 520px;
+}
+
+.person13 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:160px; 
+  left: 140px;
+}
+
+.person14 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:160px; 
+  left: 550px;
+}
+
+.person15 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:210px; 
+  left: 480px;
+}
+
+.person16 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:190px; 
+  left: 250px;
+}
+
+.person17 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:40px; 
+  left:360px;
+}
+
+.person18 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:40px; 
+  left: 300px;
+}
+
+.person19 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:80px; 
+  left: 550px;
 }
 
 .parent1 {
@@ -163,6 +230,276 @@
   width: 35px; 
   height: 35px; 
   border-radius: 50%; 
+  top:330px; 
+  left: 440px;
+}
+
+.parent21 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
   top:320px; 
   left: 290px;
+}
+
+.parent22 {
+  position: absolute; 
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  top:330px; 
+  left: 250px;
+}
+
+.groupTree {
+  /* width: 80vw; */
+}
+
+.rootTree {
+  min-width: 300px;
+  max-width: 700px;
+  min-height: 200px;
+  max-height: 100%;
+  /* background-color: #f7f7f7; */
+  background-image: url("./assets/tree.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  margin: auto;
+}
+
+.rootpersonpatriarch {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:60%; 
+  left: 52%;
+}
+
+.rootpersonmatriarch {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:60%; 
+  left: 43%;
+}
+
+.rootperson11 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top: 40%; 
+  left: 45%;
+}
+
+.rootperson12 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:35%; 
+  left: 65%;
+}
+
+.rootperson13 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:35%; 
+  left: 25%;
+}
+
+.rootperson14 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:20%; 
+  left: 62%;
+}
+
+.rootperson15 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top: 20%; 
+  left: 43%;
+}
+
+.rootperson16 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:25%; 
+  left: 23%;
+}
+
+.rootperson17 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:23%; 
+  left: 75%;
+}
+
+.rootperson18 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:10%; 
+  left: 48%;
+}
+
+
+.rootperson19 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:50%; 
+  left: 68%;
+}
+
+
+.rootperson110 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:35%; 
+  left: 73%;
+}
+
+
+.rootperson111 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:50%; 
+  left: 28%;
+}
+
+
+.rootperson112 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:30%; 
+  left: 35%;
+}
+
+
+.rootperson113 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:35%; 
+  left: 48%;
+}
+
+
+.rootperson114 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:40%; 
+  left: 55%;
+}
+
+
+.rootperson115 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:15%; 
+  left: 35%;
+}
+
+
+.rootperson116 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:15%; 
+  left: 68%;
+}
+
+.rootperson117 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:25%; 
+  left: 68%;
+}
+
+.rootperson118 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:15%; 
+  left: 78%;
+}
+
+.parent3 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:73%; 
+  left: 60%;
+}
+
+.parent4 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:75%; 
+  left: 68%;
+}
+
+.parent23 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:73%; 
+  left: 35%;
+}
+
+.parent24 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:75%; 
+  left: 28%;
+}
+
+.react-grid-layout {
+  overflow: auto;
+  min-height: 100vh;
+  max-height: fit-content;
+}
+
+.carousel-inner {
+  overflow: visible !important;
 }
