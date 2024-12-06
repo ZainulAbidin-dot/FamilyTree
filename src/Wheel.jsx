@@ -41,7 +41,7 @@ const Wheel = () => {
           layout={layout}
           cols={12}
           rowHeight={30}
-          width={1200}
+          width={"100vw"}
           autoSize
           useCSSTransforms={true}
           allowOverlap={true}
