@@ -2,15 +2,28 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
 import { axiosClient, BACKEND_URL } from './axios-client';
+import { useNavigate } from 'react-router-dom';
+import audiodata1 from './assets/audio1.mp3'
+import audiodata2 from './assets/audio2.mp3'
 
 function FamilyTreeApp() {
+  
+  let audio1 = new Audio(audiodata1);
+  let audio2 = new Audio(audiodata2);
   const [familiesData, setFamiliesData] = useState([]);
   const [index, setIndex] = useState(0);
+  const navigate = useNavigate();
 
   // Handle Carousel index selection
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
     console.log(selectedIndex);
+    
+    if (selectedIndex === formattedFamiliesData.length - 1) {
+      setTimeout(() => {
+        navigate('/wheel'); // Replace '/target-page' with your desired route
+      }, 6000);
+    }
   };
 
   // Fetch families data
@@ -39,18 +52,16 @@ function FamilyTreeApp() {
 
     return hasPatriarch && hasMatriarch;
   });
-  console.log(formattedFamiliesData);
 
+  audio1.play()
   return (
     <>
       <div className='my-5'>
         <h3 className='text-dark'>
-          Family Name: {formattedFamiliesData[index]?.family_name}
+          {formattedFamiliesData[index]?.family_name}
         </h3>
-        <p className='text-dark'>
-          Head of Family: {formattedFamiliesData[index]?.family_head_name}
-        </p>
-        <Carousel fade activeIndex={index} onSelect={handleSelect}>
+        
+        <Carousel fade wrap={false} indicators={false} activeIndex={index} onSelect={handleSelect}>
           {formattedFamiliesData.map((familyData, familyIndex) => (
             <Carousel.Item key={familyIndex} className='treecontainer'>
               {familyData?.members?.map((member, index2) => (
@@ -60,8 +71,10 @@ function FamilyTreeApp() {
                       <img
                         className='parent1'
                         src={
-                          `${BACKEND_URL}/${member.member_image}` ||
-                          'https://randomuser.me/api/portraits/women/64.jpg'
+                          member.member_image.startsWith('data:image') ? member.member_image : (
+                            `${BACKEND_URL}/${member.member_image}` ||
+                            'https://randomuser.me/api/portraits/women/64.jpg'
+                          )
                         }
                         alt=''
                         data-bs-toggle='tooltip'

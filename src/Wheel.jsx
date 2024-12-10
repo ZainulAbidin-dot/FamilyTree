@@ -6,9 +6,12 @@ import 'react-resizable/css/styles.css';
 
 import GridLayout from 'react-grid-layout';
 import { axiosClient, BACKEND_URL } from './axios-client';
+import audiodata2 from './assets/audio2.mp3'
 
 const Wheel = () => {
   const [rootFamily, setRootFamily] = useState([]);
+  
+  let audio2 = new Audio(audiodata2);
 
   useEffect(() => {
     async function fetchData() {
@@ -33,6 +36,8 @@ const Wheel = () => {
       h: 1,
     };
   });
+  // audio2.play();
+
   return (
     <div>
       <h1 className='text-dark'>Family Group</h1>
