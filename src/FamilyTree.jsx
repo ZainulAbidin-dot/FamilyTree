@@ -39,6 +39,8 @@ function FamilyTreeApp() {
       setFamiliesData(data);
     }
     fetchData();
+    
+    audio1.play()
   }, []);
 
   const formattedFamiliesData = familiesData?.filter((familyData) => {
@@ -53,7 +55,6 @@ function FamilyTreeApp() {
     return hasPatriarch && hasMatriarch;
   });
 
-  audio1.play()
   return (
     <>
       <div className='my-5'>
