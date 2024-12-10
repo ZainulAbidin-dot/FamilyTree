@@ -106,8 +106,10 @@ function FamilyTreeApp() {
                       <img
                         className='parent2'
                         src={
-                          `${BACKEND_URL}/${member.member_image}` ||
-                          'https://randomuser.me/api/portraits/women/64.jpg'
+                          member.member_image.startsWith('data:image') ? member.member_image : (
+                            `${BACKEND_URL}/${member.member_image}` ||
+                            'https://randomuser.me/api/portraits/women/64.jpg'
+                          )
                         }
                         alt=''
                         data-bs-toggle='tooltip'
@@ -139,8 +141,10 @@ function FamilyTreeApp() {
                       <img
                         className='parent21'
                         src={
-                          `${BACKEND_URL}/${member.member_image}` ||
-                          'https://randomuser.me/api/portraits/women/64.jpg'
+                          member.member_image.startsWith('data:image') ? member.member_image : (
+                            `${BACKEND_URL}/${member.member_image}` ||
+                            'https://randomuser.me/api/portraits/women/64.jpg'
+                          )
                         }
                         alt=''
                         data-bs-toggle='tooltip'
@@ -172,8 +176,10 @@ function FamilyTreeApp() {
                       <img
                         className='parent22'
                         src={
-                          `${BACKEND_URL}/${member.member_image}` ||
-                          'https://randomuser.me/api/portraits/women/64.jpg'
+                          member.member_image.startsWith('data:image') ? member.member_image : (
+                            `${BACKEND_URL}/${member.member_image}` ||
+                            'https://randomuser.me/api/portraits/women/64.jpg'
+                          )
                         }
                         alt=''
                         data-bs-toggle='tooltip'
@@ -204,8 +210,10 @@ function FamilyTreeApp() {
                     <img
                       className='personpatriarch'
                       src={
-                        `${BACKEND_URL}/${member.member_image}` ||
-                        'https://randomuser.me/api/portraits/women/64.jpg'
+                        member.member_image.startsWith('data:image') ? member.member_image : (
+                          `${BACKEND_URL}/${member.member_image}` ||
+                          'https://randomuser.me/api/portraits/women/64.jpg'
+                        )
                       }
                       alt=''
                       data-bs-toggle='tooltip'
@@ -236,8 +244,10 @@ function FamilyTreeApp() {
                     <img
                       className='personmatriarch'
                       src={
-                        `${BACKEND_URL}/${member.member_image}` ||
-                        'https://randomuser.me/api/portraits/women/64.jpg'
+                        member.member_image.startsWith('data:image') ? member.member_image : (
+                          `${BACKEND_URL}/${member.member_image}` ||
+                          'https://randomuser.me/api/portraits/women/64.jpg'
+                        )
                       }
                       alt=''
                       data-bs-toggle='tooltip'
@@ -268,8 +278,10 @@ function FamilyTreeApp() {
                     <img
                       className={`person${1 + index2}`} // This will start from person3 and increment for each child
                       src={
-                        `${BACKEND_URL}/${member.member_image}` ||
-                        'https://randomuser.me/api/portraits/women/64.jpg'
+                        member.member_image.startsWith('data:image') ? member.member_image : (
+                          `${BACKEND_URL}/${member.member_image}` ||
+                          'https://randomuser.me/api/portraits/women/64.jpg'
+                        )
                       }
                       alt=''
                       data-bs-toggle='tooltip'
