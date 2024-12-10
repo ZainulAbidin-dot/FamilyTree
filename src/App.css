@@ -216,6 +216,15 @@
   left: 550px;
 }
 
+.person20 {
+  position: absolute; 
+  width: 40px; 
+  height: 40px; 
+  border-radius: 50%; 
+  top:90px; 
+  left: 550px;
+}
+
 .parent1 {
   position: absolute; 
   width: 40px; 
@@ -464,6 +473,15 @@
   height: 20px; 
   border-radius: 50%; 
   top:45%; 
+  left: 80%;
+}
+
+.rootperson120 {
+  position: absolute; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  top:50%; 
   left: 80%;
 }
 
