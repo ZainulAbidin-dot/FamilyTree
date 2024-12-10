@@ -82,8 +82,6 @@ function FamilyTreeApp() {
                         title={member.name}
                         style={{
                           position: 'absolute',
-                          width: '35px',
-                          height: '35px',
                           borderRadius: '50%',
                           transition: 'transform 0.3s ease-in-out, z-index 0s',
                           // top: `${40 + (index2 )}%`,  // Dynamically adjust top position based on the index
@@ -117,8 +115,6 @@ function FamilyTreeApp() {
                         title={member.name}
                         style={{
                           position: 'absolute',
-                          width: '35px',
-                          height: '35px',
                           borderRadius: '50%',
                           transition: 'transform 0.3s ease-in-out, z-index 0s',
                           // top: `${40 + (index2 )}%`,  // Dynamically adjust top position based on the index
@@ -152,8 +148,6 @@ function FamilyTreeApp() {
                         title={member.name}
                         style={{
                           position: 'absolute',
-                          width: '35px',
-                          height: '35px',
                           borderRadius: '50%',
                           transition: 'transform 0.3s ease-in-out, z-index 0s',
                           // top: `${40 + (index2 )}%`,  // Dynamically adjust top position based on the index
@@ -187,8 +181,6 @@ function FamilyTreeApp() {
                         title={member.name}
                         style={{
                           position: 'absolute',
-                          width: '35px',
-                          height: '35px',
                           borderRadius: '50%',
                           transition: 'transform 0.3s ease-in-out, z-index 0s',
                           // top: `${40 + (index2 )}%`,  // Dynamically adjust top position based on the index
@@ -221,8 +213,6 @@ function FamilyTreeApp() {
                       title={member.name}
                       style={{
                         position: 'absolute',
-                        width: '35px',
-                        height: '35px',
                         borderRadius: '50%',
                         transition: 'transform 0.3s ease-in-out, z-index 0s',
                         // top: `${40 + (index2 )}%`,  // Dynamically adjust top position based on the index
@@ -255,8 +245,6 @@ function FamilyTreeApp() {
                       title={member.name}
                       style={{
                         position: 'absolute',
-                        width: '35px',
-                        height: '35px',
                         borderRadius: '50%',
                         transition: 'transform 0.3s ease-in-out, z-index 0s',
                         // top: `${40 + (index2 )}%`,  // Dynamically adjust top position based on the index
@@ -289,8 +277,6 @@ function FamilyTreeApp() {
                       title={member.name}
                       style={{
                         position: 'absolute',
-                        width: '35px',
-                        height: '35px',
                         borderRadius: '50%',
                         transition: 'transform 0.3s ease-in-out, z-index 0s',
                         // top: `${40 + (index2 )}%`,  // Dynamically adjust top position based on the index

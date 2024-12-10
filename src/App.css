@@ -4,15 +4,15 @@
 }
 
 .carousel {
-  max-width: 700px;
+  max-width: 90vw;
   margin: auto;  
 }
 
 .treecontainer {
-  min-width: 700px;
-  max-width: 700px;
-  min-height: 400px;
-  max-height: 400px;
+  min-width: 90vw;
+  max-width: 90vw;
+  min-height: 80vh;
+  max-height: 80vh;
   background-color: #ede9e9;
   /* background-color: #f7f7f7; */
   background-image: url("./assets/tree.png");
@@ -25,240 +25,240 @@
 
 .personpatriarch {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:260px; 
-  left: 360px;
+  top: 63%; 
+  left: 51%;
 }
 
 .personmatriarch {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:260px; 
-  left: 310px;
+  top: 63%; 
+  left: 45%;
 }
 
 .person1 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:160px; 
-  left: 385px;
+  top: 45%; 
+  left: 49%;
 }
 
 .person2 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:180px; 
-  left: 340px;
+  top: 45%; 
+  left: 57%;
   /* top:160px; 
   left: 220px; */
 }
 
 .person3 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:160px; 
-  left: 290px;
+  top: 45%; 
+  left: 38%;
   /* top:160px; 
   left: 462px; */
 }
 
 .person4 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:110px; 
-  left: 250px;
+  top: 30%; 
+  left: 50%;
 }
 
 .person5 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:110px; 
-  left: 440px;
+  top: 30%; 
+  left: 60%;
 }
 
 .person6 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:96px; 
-  left: 335px;
+  top: 33%; 
+  left: 36%;
 }
 
 .person7 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:70px; 
-  left: 270px;
+  top: 50%; 
+  left: 65%;
 }
 
 .person8 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:70px; 
-  left: 400px;
+  top: 50%; 
+  left: 33%;
 }
 
 .person9 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:70px; 
-  left: 200px;
+  top: 40%; 
+  left: 70%;
 }
 
 .person10 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:70px; 
-  left: 500px;
+  top: 38%; 
+  left: 30%;
 }
 
 .person11 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:110px; 
-  left: 160px;
+  top: 28%; 
+  left: 67%;
 }
 
 .person12 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:110px; 
-  left: 520px;
+  top: 35%; 
+  left: 28%;
 }
 
 .person13 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:160px; 
-  left: 140px;
+  top: 18%; 
+  left: 65%;
 }
 
 .person14 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:160px; 
-  left: 550px;
+  top: 14%; 
+  left: 60%;
 }
 
 .person15 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:210px; 
-  left: 480px;
+  top: 14%; 
+  left: 53%;
 }
 
 .person16 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:190px; 
-  left: 250px;
+  top: 14%; 
+  left: 45%;
 }
 
 .person17 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:40px; 
-  left:360px;
+  top: 20%; 
+  left: 31%;
 }
 
 .person18 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:40px; 
-  left: 300px;
+  top: 52%; 
+  left: 27%;
 }
 
 .person19 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:80px; 
-  left: 550px;
+  top: 14%; 
+  left: 40%;
 }
 
 .person20 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top: 140px; 
-  left: 100px;
+  top: 14%; 
+  left: 60%;
 }
 
 .parent1 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:320px; 
-  left: 400px;
+  top: 80%; 
+  left: 53%;
 }
 
 .parent2 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:330px; 
-  left: 440px;
+  top: 83%; 
+  left: 57%;
 }
 
 .parent21 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:320px; 
-  left: 290px;
+  top:80%; 
+  left: 45%;
 }
 
 .parent22 {
   position: absolute; 
-  width: 40px; 
-  height: 40px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%; 
-  top:330px; 
-  left: 250px;
+  top: 83%; 
+  left: 41%;
 }
 
 .groupTree {
