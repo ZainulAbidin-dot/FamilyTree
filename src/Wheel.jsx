@@ -21,7 +21,6 @@ const Wheel = () => {
         },
       });
 
-      console.log(data);
       setRootFamily(data);
     }
     fetchData();
