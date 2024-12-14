@@ -1,22 +1,37 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // If you're using react-router-dom for navigation
-// Note: If you're not using react-router, replace <Link> with <a> tags
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-light bg-light">
-      <div className="container-fluid d-flex justify-content-between">
+    <nav className='navbar navbar-light bg-light | app-navbar'>
+      <div className='container-fluid d-flex justify-content-between'>
         <div>
-            <a className="navbar-brand" href="/">Family Tree</a>
+          <a className='navbar-brand' href='/'>
+            Family Tree
+          </a>
         </div>
-          <ul className="navbar-nav d-flex flex-row gap-3">
-            <li className="nav-item">
-              <Link className="nav-link" to="/">Carousel</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/wheel">Family Group</Link>
-            </li>
-          </ul>
+        <ul className='navbar-nav d-flex flex-row gap-3'>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/'>
+              Carousel
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/wheel'>
+              Family Group
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <a
+              href='https://photos.app.goo.gl/g6opsNrn76cXbVDn9'
+              className='btn btn-success w-auto'
+              target='_blank'
+              rel='noreferrer noopener'
+            >
+              Frame
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
   );
