@@ -24,13 +24,11 @@
 }
 
 .treecontainer {
-  min-width: 90vw;
-  max-width: 90vw;
-  min-height: 80vh;
+  width: 100%;
+  aspect-ratio: 1920 / 1080;
   max-height: 80vh;
   background-color: #ede9e9;
-  /* background-color: #f7f7f7; */
-  background-image: url('./assets/tree.png');
+  background-image: url('./assets/family-tree-2.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
