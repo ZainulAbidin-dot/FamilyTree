@@ -1,5 +1,11 @@
+@font-face {
+  src: url(fonts/Trajan\ Pro\ 3\ Regular.otf);
+  font-family: trajan;
+}
+
 #root {
   text-align: center;
+  font-family: trajan;
 }
 
 .app-navbar {
