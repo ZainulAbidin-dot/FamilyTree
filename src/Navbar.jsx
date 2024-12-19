@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({music, setMusic}) => {
+
   return (
     <nav className='navbar navbar-light bg-light | app-navbar'>
       <div className='container-fluid d-flex justify-content-between'>
@@ -30,6 +31,9 @@ const Navbar = () => {
             >
               Frame
             </a>
+          </li>
+          <li>
+            <button className='btn btn-success' onClick={() => setMusic((prev) => !prev) }>{music ? "Pause" : "Play"}</button>
           </li>
         </ul>
       </div>
