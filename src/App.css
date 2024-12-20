@@ -38,20 +38,20 @@
 
 .personpatriarch {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 80px;
   border-radius: 50%;
   top: 63%;
-  left: 51%;
+  left: 49.25%;
 }
 
 .personmatriarch {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 80px;
   border-radius: 50%;
   top: 63%;
-  left: 45%;
+  left: 42.75%;
 }
 
 .person1 {
@@ -59,8 +59,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 45%;
-  left: 49%;
+  top: 39%;
+  left: 50%;
 }
 
 .person2 {
@@ -68,8 +68,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 45%;
-  left: 57%;
+  top: 40%;
+  left: 43%;
   /* top:160px; 
   left: 220px; */
 }
@@ -79,8 +79,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 45%;
-  left: 38%;
+  top: 31%;
+  left: 54%;
   /* top:160px; 
   left: 462px; */
 }
@@ -90,8 +90,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 30%;
-  left: 50%;
+  top: 27%;
+  left: 41%;
 }
 
 .person5 {
@@ -99,8 +99,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 30%;
-  left: 60%;
+  top: 29%;
+  left: 35%;
 }
 
 .person6 {
@@ -108,8 +108,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 33%;
-  left: 36%;
+  top: 22%;
+  left: 60%;
 }
 
 .person7 {
@@ -117,38 +117,11 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 50%;
-  left: 65%;
-}
-
-.person8 {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  top: 50%;
-  left: 33%;
-}
-
-.person9 {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  top: 40%;
-  left: 70%;
-}
-
-.person10 {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  top: 38%;
+  top: 24%;
   left: 30%;
 }
 
-.person11 {
+.person8 {
   position: absolute;
   width: 50px;
   height: 50px;
@@ -157,13 +130,40 @@
   left: 67%;
 }
 
+.person9 {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 10%;
+  left: 37%;
+}
+
+.person10 {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 15%;
+  left: 42%;
+}
+
+.person11 {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 19%;
+  left: 51%;
+}
+
 .person12 {
   position: absolute;
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 35%;
-  left: 28%;
+  top: 10%;
+  left: 57%;
 }
 
 .person13 {
@@ -171,8 +171,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 18%;
-  left: 65%;
+  top: 15%;
+  left: 63%;
 }
 
 .person14 {
@@ -180,8 +180,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 14%;
-  left: 60%;
+  top: 40%;
+  left: 30%;
 }
 
 .person15 {
@@ -189,8 +189,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 14%;
-  left: 53%;
+  top: 35%;
+  left: 75%;
 }
 
 .person16 {
@@ -198,8 +198,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 14%;
-  left: 45%;
+  top: 35%;
+  left: 20%;
 }
 
 .person17 {
@@ -207,8 +207,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 20%;
-  left: 31%;
+  top: 7%;
+  left: 51%;
 }
 
 .person18 {
@@ -216,8 +216,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 52%;
-  left: 27%;
+  top: 5%;
+  left: 42%;
 }
 
 .person19 {
@@ -225,8 +225,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 14%;
-  left: 40%;
+  top: 45%;
+  left: 67%;
 }
 
 .person20 {
@@ -234,7 +234,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 14%;
+  top: 50%;
   left: 60%;
 }
 
@@ -243,8 +243,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 80%;
-  left: 53%;
+  top: 78%;
+  left: 56%;
 }
 
 .parent2 {
@@ -253,7 +253,7 @@
   height: 50px;
   border-radius: 50%;
   top: 83%;
-  left: 57%;
+  left: 63%;
 }
 
 .parent21 {
@@ -261,8 +261,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 80%;
-  left: 45%;
+  top: 78%;
+  left: 37%;
 }
 
 .parent22 {
@@ -271,7 +271,7 @@
   height: 50px;
   border-radius: 50%;
   top: 83%;
-  left: 41%;
+  left: 32%;
 }
 
 .groupTree {

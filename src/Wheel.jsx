@@ -29,8 +29,8 @@ const Wheel = () => {
       i: family.family_id.toString(),
       x: x,
       y: y,
-      w: 2,
-      h: 2,
+      w: 1,
+      h: 1,
     };
   });
 

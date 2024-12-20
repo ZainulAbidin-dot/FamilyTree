@@ -108,6 +108,7 @@ function FamilyTreeApp() {
                   {(member.member_as === 'Son' || member.member_as === 'Daughter') && (
                     <CarouselImage
                       className={`person${1 + index2}`}
+                      // className={`person20`}
                       member_image={member.member_image}
                       name={member.name}
                     />
