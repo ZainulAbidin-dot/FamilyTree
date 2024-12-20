@@ -30,27 +30,6 @@ const Navbar = () => {
     };
   }, []);
 
-  useEffect(() => {
-    function detectClickAndPlay() {
-      if (!audioElementRef.current) return;
-
-      if (audioPlaying) return;
-
-      if (audioElementRef.current.paused) {
-        audioElementRef.current.loop = true;
-        audioElementRef.current.play();
-        setAudioPlaying(true);
-        document.removeEventListener('click', detectClickAndPlay);
-      }
-    }
-
-    document.addEventListener('click', detectClickAndPlay);
-
-    return () => {
-      document.removeEventListener('click', detectClickAndPlay);
-    };
-  }, [audioPlaying, audioElementRef]);
-
   function handleAudioButtonClick() {
     if (!audioElementRef.current) return;
 

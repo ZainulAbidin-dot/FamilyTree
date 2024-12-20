@@ -526,12 +526,6 @@
   left: 28%;
 }
 
-.react-grid-layout {
-  overflow: auto;
-  min-height: 100vh;
-  max-height: fit-content;
-}
-
 .carousel-inner {
   overflow: visible !important;
 }

@@ -16,13 +16,21 @@ const Wheel = () => {
     fetchData();
   }, []);
 
+  const windowWidth = window.innerWidth;
+
+  const elementsPerRow = Math.floor(windowWidth / 300);
+
   const layout = rootFamily.map((family, index) => {
+    const x = (index % elementsPerRow) * 2;
+
+    const y = Math.floor(index / elementsPerRow) * 2;
+
     return {
       i: family.family_id.toString(),
-      x: index,
-      y: 0,
-      w: 1,
-      h: 1,
+      x: x,
+      y: y,
+      w: 2,
+      h: 2,
     };
   });
 
@@ -31,13 +39,13 @@ const Wheel = () => {
       <h1 className='text-dark'>The Orchard</h1>
       <div>
         <GridLayout
+          autoSize={true}
           layout={layout}
-          cols={12}
-          rowHeight={100}
-          autoSize
           useCSSTransforms={true}
           allowOverlap={true}
           isResizable={false}
+          isDraggable={true}
+          width={window.innerWidth}
         >
           {rootFamily.map((family) => (
             <div className='d-flex flex-column align-items-center' key={family.family_id}>
