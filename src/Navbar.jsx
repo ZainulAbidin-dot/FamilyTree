@@ -82,12 +82,12 @@ const Navbar = () => {
         <ul className='navbar-nav d-flex flex-row gap-3'>
           <li className='nav-item'>
             <Link className='nav-link' to='/'>
-              Carousel
+              The Trees
             </Link>
           </li>
           <li className='nav-item'>
             <Link className='nav-link' to='/wheel'>
-              Family Group
+              The Orchard
             </Link>
           </li>
           <li className='nav-item'>
@@ -97,7 +97,7 @@ const Navbar = () => {
               target='_blank'
               rel='noreferrer noopener'
             >
-              Frame
+              Yiddishe Nachas
             </a>
           </li>
           <li>

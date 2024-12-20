@@ -28,7 +28,7 @@ const Wheel = () => {
 
   return (
     <div>
-      <h1 className='text-dark'>Family Group</h1>
+      <h1 className='text-dark'>The Orchard</h1>
       <div>
         <GridLayout
           layout={layout}
