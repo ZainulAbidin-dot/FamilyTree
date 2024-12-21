@@ -279,12 +279,12 @@
 }
 
 .rootTree {
-  min-width: 300px;
+  min-width: 200px;
   max-width: 700px;
   min-height: 200px;
   max-height: 100%;
   /* background-color: #f7f7f7; */
-  background-image: url('./assets/tree.png');
+  background-image: url('./assets/family-tree-2.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -297,8 +297,8 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  top: 60%;
-  left: 52%;
+  top: 57%;
+  left: 48%;
 }
 
 .rootpersonmatriarch {
@@ -306,188 +306,188 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  top: 60%;
-  left: 43%;
+  top: 57%;
+  left: 38%;
 }
 
 .rootperson11 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 40%;
-  left: 45%;
+  top: 43%;
+  left: 50%;
 }
 
 .rootperson12 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 35%;
-  left: 65%;
+  top: 45%;
+  left: 40%;
 }
 
 .rootperson13 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 35%;
-  left: 25%;
+  top: 38%;
+  left: 58%;
 }
 
 .rootperson14 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 20%;
-  left: 62%;
+  top: 36%;
+  left: 38%;
 }
 
 .rootperson15 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 20%;
-  left: 43%;
+  top: 37%;
+  left: 28%;
 }
 
 .rootperson16 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 25%;
-  left: 23%;
+  top: 33%;
+  left: 63%;
 }
 
 .rootperson17 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 23%;
-  left: 75%;
+  top: 35%;
+  left: 21%;
 }
 
 .rootperson18 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 10%;
-  left: 48%;
+  top: 38%;
+  left: 73%;
 }
 
 .rootperson19 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 50%;
-  left: 68%;
+  top: 25%;
+  left: 31%;
 }
 
 .rootperson110 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 35%;
-  left: 73%;
+  top: 32%;
+  left: 40%;
 }
 
 .rootperson111 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 50%;
-  left: 28%;
+  top: 33%;
+  left: 51%;
 }
 
 .rootperson112 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 30%;
-  left: 35%;
+  top: 26%;
+  left: 61%;
 }
 
 .rootperson113 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 35%;
-  left: 48%;
+  top: 28%;
+  left: 71%;
 }
 
 .rootperson114 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 40%;
-  left: 55%;
+  top: 46%;
+  left: 23%;
 }
 
 .rootperson115 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 15%;
-  left: 35%;
+  top: 43%;
+  left: 11%;
 }
 
 .rootperson116 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 15%;
-  left: 68%;
+  top: 23%;
+  left: 53%;
 }
 
 .rootperson117 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 25%;
-  left: 68%;
+  top: 23%;
+  left: 38%;
 }
 
 .rootperson118 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 15%;
-  left: 78%;
+  top: 43%;
+  left: 86%;
 }
 
 .rootperson119 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 45%;
-  left: 80%;
+  top: 48%;
+  left: 78%;
 }
 
 .rootperson120 {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  top: 50%;
-  left: 80%;
+  top: 30%;
+  left: 13%;
 }
 
 .parent3 {
@@ -495,8 +495,8 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  top: 73%;
-  left: 60%;
+  top: 65%;
+  left: 57%;
 }
 
 .parent4 {
@@ -504,7 +504,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  top: 75%;
+  top: 67%;
   left: 68%;
 }
 
@@ -513,8 +513,8 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  top: 73%;
-  left: 35%;
+  top: 65%;
+  left: 33%;
 }
 
 .parent24 {
@@ -522,10 +522,105 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  top: 75%;
-  left: 28%;
+  top: 67%;
+  left: 25%;
 }
 
 .carousel-inner {
   overflow: visible !important;
+}
+
+
+
+.grid-layout {
+  padding: 0rem 1rem;
+  /* height: 100vh; */
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1rem;
+  place-content: center;
+
+}
+
+.grid-item {
+  background-color: transparent;
+  /* border: 1px solid black; */
+  padding: -1rem 1rem;
+  font-size: 2rem;
+
+  display: grid;
+  place-items: center;
+}
+
+.grid-item:nth-child(1) {
+  grid-row: 1;
+  grid-column: 1;
+}
+.grid-item:nth-child(2) {
+  grid-row: 1;
+  grid-column: 4;
+}
+
+.grid-item:nth-child(3) {
+  grid-row: 1;
+  grid-column: 5;
+}
+
+.grid-item:nth-child(4) {
+  grid-row: 1;
+  grid-column: 6;
+}
+
+.grid-item:nth-child(5) {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.grid-item:nth-child(6) {
+  grid-row: 2;
+  grid-column: 2;
+}
+.grid-item:nth-child(7) {
+  grid-row: 2;
+  grid-column: 3;
+  margin-left: 6rem;
+  margin-right: -6rem;
+}
+
+.grid-item:nth-child(8) {
+  grid-row: 2;
+  grid-column: 5;
+}
+
+.grid-item:nth-child(9) {
+  grid-row: 2;
+  grid-column: 6;
+}
+
+.grid-item:nth-child(10) {
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.grid-item:nth-child(11) {
+  grid-row: 3;
+  grid-column: 2;
+}
+
+.grid-item:nth-child(12) {
+  grid-row: 3;
+  grid-column: 4;
+}
+
+.grid-item:nth-child(13) {
+  grid-row: 3;
+  grid-column: 5;
+}
+
+.grid-item:nth-child(14) {
+  grid-row: 3;
+  grid-column: 6;
 }

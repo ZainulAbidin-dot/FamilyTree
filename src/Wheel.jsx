@@ -34,11 +34,35 @@ const Wheel = () => {
     };
   });
 
+  const familyOrderArr = [
+    "Avrohom Tzvi & Leah",
+    "Chaim & Rochela",
+    "Moshe Eliyahu & Ahuva",
+    "M.M. & Sara",
+    "Sholom & Rochel",
+    "Rephael & Henny",
+    "Aba & Ema",
+    "Chaim Tzvi & Yehudis",
+    "Yaakov Ben-Tzion & Rivky",
+    "Mayer Moshe & Esther Toby",
+    "Dovi & Chava",
+    "Eli & Tzivi",
+    "Tzvi & Rivky",
+    "Yitzy & Perel Bracha"
+  ];
+
+  // console.log(rootFamily)
+  const reorderedFamily = [];
+  
+  familyOrderArr.forEach(orderedFamilyName => rootFamily.map(family => {
+    if(orderedFamilyName == family.family_name) reorderedFamily.push(family);
+  }))
+
   return (
     <div>
       <h1 className='text-dark'>The Orchard</h1>
       <div>
-        <GridLayout
+        {/* <GridLayout
           autoSize={true}
           layout={layout}
           useCSSTransforms={true}
@@ -221,7 +245,103 @@ const Wheel = () => {
               </div>
             </div>
           ))}
-        </GridLayout>
+        </GridLayout> */}
+
+        <div className='grid-layout'>
+          {reorderedFamily.map((family) => (
+            <div className='grid-item d-flex flex-column align-items-center' key={family.family_id}>
+              <p style={{ fontSize: '9px' }} className='h6 lead text-center m-0'>
+                {family.family_name}
+              </p>
+              <div className='rootTree m-0'>
+                {family.members.map((member, index2) => (
+                  <div key={member.member_id} className='mb-2 text-center'>
+                    {member.member_as === 'Patriarch_Father' &&
+                      member.sub_family_of === null && (
+                        // <img
+                        //   className='parent3'
+                        //   src={
+                        //     member.member_image.startsWith('data:image')
+                        //       ? member.member_image
+                        //       : `${BACKEND_URL}/${member.member_image}` ||
+                        //         'https://randomuser.me/api/portraits/women/64.jpg'
+                        //   }
+                        //   alt=''
+                        //   data-bs-toggle='tooltip'
+                        //   data-bs-placement='top'
+                        //   title={member.name}
+                        // />
+                        <WheelImage
+                          className='parent3'
+                          member_image={member.member_image}
+                          name={member.name}
+                        />
+                      )}
+                    {member.member_as === 'Patriarch_Mother' &&
+                      member.sub_family_of === null && (
+                        // <img
+                        //   className='parent4'
+                        //   src={
+                        //     member.member_image.startsWith('data:image')
+                        //       ? member.member_image
+                        //       : `${BACKEND_URL}/${member.member_image}` ||
+                        //         'https://randomuser.me/api/portraits/women/64.jpg'
+                        //   }
+                        //   alt=''
+                        //   data-bs-toggle='tooltip'
+                        //   data-bs-placement='top'
+                        //   title={member.name}
+                        // />
+                        <WheelImage
+                          className='parent4'
+                          member_image={member.member_image}
+                          name={member.name}
+                        />
+                      )}
+                    {member.member_as === 'Matriarch_Father' &&
+                      member.sub_family_of === null && (
+                        <WheelImage
+                          className='parent23'
+                          member_image={member.member_image}
+                          name={member.name}
+                        />
+                      )}
+                    {member.member_as === 'Matriarch_Mother' &&
+                      member.sub_family_of === null && (
+                        <WheelImage
+                          className='parent24'
+                          member_image={member.member_image}
+                          name={member.name}
+                        />
+                      )}
+                    {member.member_as === 'Patriarch' && (
+                      <WheelImage
+                        className='rootpersonpatriarch'
+                        member_image={member.member_image}
+                        name={member.name}
+                      />
+                    )}
+                    {member.member_as === 'Matriarch' && (
+                      <WheelImage
+                        className='rootpersonmatriarch'
+                        member_image={member.member_image}
+                        name={member.name}
+                      />
+                    )}
+                    {(member.member_as === 'Son' || member.member_as === 'Daughter') && (
+                      <WheelImage
+                        // className={`rootperson120`}
+                        className={`rootperson1${1 + index2}`}
+                        member_image={member.member_image}
+                        name={member.name}
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
