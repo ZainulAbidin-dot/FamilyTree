@@ -35,20 +35,23 @@ const Wheel = () => {
   });
 
   const familyOrderArr = [
-    "Avrohom Tzvi & Leah",
-    "Chaim & Rochela",
-    "Moshe Eliyahu & Ahuva",
-    "M.M. & Sara",
-    "Sholom & Rochel",
     "Rephael & Henny",
-    "Aba & Ema",
-    "Chaim Tzvi & Yehudis",
-    "Yaakov Ben-Tzion & Rivky",
-    "Mayer Moshe & Esther Toby",
     "Dovi & Chava",
-    "Eli & Tzivi",
+    "Moshe & Sarala",
+    "Yaakov Ben-Tzion & Rivky",
+    "Yitzy & Perel Bracha",
+    "Moshe Eliyahu & Ahuva",
+    "Sholom & Rochel",
+    "Mayer Moshe & Esther Toby",
+    "Aba & Ema",
+    "M.M. & Sara",
+    "Avrohom Shimon & Shani",
+    "Chaim Tzvi & Yehudis",
     "Tzvi & Rivky",
-    "Yitzy & Perel Bracha"
+    "Eli & Tzivi",
+    "Chaim & Chaya Deena",
+    "Avrohom Tzvi & Leah",
+    "Chaim & Rochela"
   ];
 
   // console.log(rootFamily)
@@ -57,6 +60,8 @@ const Wheel = () => {
   familyOrderArr.forEach(orderedFamilyName => rootFamily.map(family => {
     if(orderedFamilyName == family.family_name) reorderedFamily.push(family);
   }))
+
+  console.log(rootFamily)
 
   return (
     <div>
