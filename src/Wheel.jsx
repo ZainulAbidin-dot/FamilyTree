@@ -254,7 +254,27 @@ const Wheel = () => {
 
         <div className='grid-layout'>
           {reorderedFamily.map((family) => (
-            <div className='grid-item d-flex flex-column align-items-center' key={family.family_id}>
+            <div onClick={(e) => {
+              const gridItem = e.currentTarget; // Use the clicked element
+              // Move to center
+              gridItem.style.position = "fixed";
+              gridItem.style.top = "50%";
+              gridItem.style.left = "50%";
+              gridItem.style.transform = "translate(-50%, -50%) scale(4)";
+              gridItem.style.transition = "transform 0.7s ease-in-out, top 0.7s ease-in-out, left 0.7s ease-in-out";
+              gridItem.style.zIndex = "10";
+              gridItem.style.backgroundColor = "rgba(0, 0, 0, 0.607)";
+          
+              // After 15 seconds, return to original position
+              setTimeout(() => {
+                gridItem.style.position = "";
+                gridItem.style.top = "";
+                gridItem.style.left = "";
+                gridItem.style.transform = "scale(1)";
+                gridItem.style.zIndex = "";              
+                gridItem.style.backgroundColor = "transparent";
+              }, 10000);
+            }} className='grid-item d-flex flex-column align-items-center' key={family.family_id}>
               <p style={{ fontSize: '9px' }} className='h6 lead text-center m-0'>
                 {family.family_name}
               </p>
