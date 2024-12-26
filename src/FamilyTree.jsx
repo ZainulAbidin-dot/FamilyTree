@@ -55,7 +55,9 @@ function FamilyTreeApp() {
           onSelect={handleSelect}
           interval={30 * 1000}
         >
-          {formattedFamiliesData.map((familyData, familyIndex) => (
+          {formattedFamiliesData.map((familyData, familyIndex) => {
+            let counter = 1;
+            return (
             <Carousel.Item key={familyIndex} className='treecontainer'>
               {familyData?.members?.map((member, index2) => (
                 <React.Fragment key={member.member_id}>
@@ -107,7 +109,7 @@ function FamilyTreeApp() {
                   )}
                   {(member.member_as === 'Son' || member.member_as === 'Daughter') && (
                     <CarouselImage
-                      className={`person${1 + index2}`}
+                      className={`person${counter++}`}
                       // className={`person20`}
                       member_image={member.member_image}
                       name={member.name}
@@ -115,8 +117,8 @@ function FamilyTreeApp() {
                   )}
                 </React.Fragment>
               ))}
-            </Carousel.Item>
-          ))}
+            </Carousel.Item>)
+          })}
         </Carousel>
       </div>
     </>

@@ -44,7 +44,7 @@ const Wheel = () => {
     "Sholom & Rochel",
     "Mayer Moshe & Esther Toby",
     "Aba & Ema",
-    "M.M. & Sara",
+    "M.M & Sara",
     "Avrohom Shimon & Shani",
     "Chaim Tzvi & Yehudis",
     "Tzvi & Rivky",
@@ -253,119 +253,123 @@ const Wheel = () => {
         </GridLayout> */}
 
         <div className='grid-layout'>
-          {reorderedFamily.map((family) => (
-            <div onClick={(e) => {
-              const gridItem = e.currentTarget; // Use the clicked element
-              // Move to center
-              gridItem.style.position = "fixed";
-              gridItem.style.top = "50%";
-              gridItem.style.left = "50%";
-              gridItem.style.transform = "translate(-50%, -50%) scale(4)";
-              gridItem.style.transition = "transform 0.7s ease-in-out, top 0.7s ease-in-out, left 0.7s ease-in-out";
-              gridItem.style.zIndex = "10";
-              gridItem.style.backgroundColor = "rgba(0, 0, 0, 0.607)";
-          
-              // After 15 seconds, return to original position
-              setTimeout(() => {
-                gridItem.style.position = "";
-                gridItem.style.top = "";
-                gridItem.style.left = "";
-                gridItem.style.transform = "scale(1)";
-                gridItem.style.zIndex = "";              
-                gridItem.style.backgroundColor = "transparent";
-              }, 10000);
-            }} className='grid-item d-flex flex-column align-items-center' key={family.family_id}>
-              <p style={{ fontSize: '9px' }} className='h6 lead text-center m-0'>
-                {family.family_name}
-              </p>
-              <div className='rootTree m-0'>
-                {family.members.map((member, index2) => (
-                  <div key={member.member_id} className='mb-2 text-center'>
-                    {member.member_as === 'Patriarch_Father' &&
-                      member.sub_family_of === null && (
-                        // <img
-                        //   className='parent3'
-                        //   src={
-                        //     member.member_image.startsWith('data:image')
-                        //       ? member.member_image
-                        //       : `${BACKEND_URL}/${member.member_image}` ||
-                        //         'https://randomuser.me/api/portraits/women/64.jpg'
-                        //   }
-                        //   alt=''
-                        //   data-bs-toggle='tooltip'
-                        //   data-bs-placement='top'
-                        //   title={member.name}
-                        // />
+          {reorderedFamily.map((family) => {
+            let counter = 1;
+
+            return (
+              <div onClick={(e) => {
+                const gridItem = e.currentTarget; // Use the clicked element
+                // Move to center
+                gridItem.style.position = "fixed";
+                gridItem.style.top = "50%";
+                gridItem.style.left = "50%";
+                gridItem.style.transform = "translate(-50%, -50%) scale(4)";
+                gridItem.style.transition = "transform 0.7s ease-in-out, top 0.7s ease-in-out, left 0.7s ease-in-out";
+                gridItem.style.zIndex = "10";
+                gridItem.style.backgroundColor = "white";
+            
+                // After 15 seconds, return to original position
+                setTimeout(() => {
+                  gridItem.style.position = "";
+                  gridItem.style.top = "";
+                  gridItem.style.left = "";
+                  gridItem.style.transform = "scale(1)";
+                  gridItem.style.zIndex = "";              
+                  gridItem.style.backgroundColor = "transparent";
+                }, 10000);
+              }} className='grid-item d-flex flex-column align-items-center' key={family.family_id}>
+                <p style={{ fontSize: '9px' }} className='h6 lead text-center m-0'>
+                  {family.family_name}
+                </p>
+                <div className='rootTree m-0'>
+                  {family.members.map((member, index2) => (
+                    <div key={member.member_id} className='mb-2 text-center'>
+                      {member.member_as === 'Patriarch_Father' &&
+                        member.sub_family_of === null && (
+                          // <img
+                          //   className='parent3'
+                          //   src={
+                          //     member.member_image.startsWith('data:image')
+                          //       ? member.member_image
+                          //       : `${BACKEND_URL}/${member.member_image}` ||
+                          //         'https://randomuser.me/api/portraits/women/64.jpg'
+                          //   }
+                          //   alt=''
+                          //   data-bs-toggle='tooltip'
+                          //   data-bs-placement='top'
+                          //   title={member.name}
+                          // />
+                          <WheelImage
+                            className='parent3'
+                            member_image={member.member_image}
+                            name={member.name}
+                          />
+                        )}
+                      {member.member_as === 'Patriarch_Mother' &&
+                        member.sub_family_of === null && (
+                          // <img
+                          //   className='parent4'
+                          //   src={
+                          //     member.member_image.startsWith('data:image')
+                          //       ? member.member_image
+                          //       : `${BACKEND_URL}/${member.member_image}` ||
+                          //         'https://randomuser.me/api/portraits/women/64.jpg'
+                          //   }
+                          //   alt=''
+                          //   data-bs-toggle='tooltip'
+                          //   data-bs-placement='top'
+                          //   title={member.name}
+                          // />
+                          <WheelImage
+                            className='parent4'
+                            member_image={member.member_image}
+                            name={member.name}
+                          />
+                        )}
+                      {member.member_as === 'Matriarch_Father' &&
+                        member.sub_family_of === null && (
+                          <WheelImage
+                            className='parent23'
+                            member_image={member.member_image}
+                            name={member.name}
+                          />
+                        )}
+                      {member.member_as === 'Matriarch_Mother' &&
+                        member.sub_family_of === null && (
+                          <WheelImage
+                            className='parent24'
+                            member_image={member.member_image}
+                            name={member.name}
+                          />
+                        )}
+                      {member.member_as === 'Patriarch' && (
                         <WheelImage
-                          className='parent3'
+                          className='rootpersonpatriarch'
                           member_image={member.member_image}
                           name={member.name}
                         />
                       )}
-                    {member.member_as === 'Patriarch_Mother' &&
-                      member.sub_family_of === null && (
-                        // <img
-                        //   className='parent4'
-                        //   src={
-                        //     member.member_image.startsWith('data:image')
-                        //       ? member.member_image
-                        //       : `${BACKEND_URL}/${member.member_image}` ||
-                        //         'https://randomuser.me/api/portraits/women/64.jpg'
-                        //   }
-                        //   alt=''
-                        //   data-bs-toggle='tooltip'
-                        //   data-bs-placement='top'
-                        //   title={member.name}
-                        // />
+                      {member.member_as === 'Matriarch' && (
                         <WheelImage
-                          className='parent4'
+                          className='rootpersonmatriarch'
                           member_image={member.member_image}
                           name={member.name}
                         />
                       )}
-                    {member.member_as === 'Matriarch_Father' &&
-                      member.sub_family_of === null && (
+                      {(member.member_as === 'Son' || member.member_as === 'Daughter') && (
                         <WheelImage
-                          className='parent23'
+                          // className={`rootperson120`}
+                          className={`rootperson1${counter++}`}
                           member_image={member.member_image}
                           name={member.name}
                         />
                       )}
-                    {member.member_as === 'Matriarch_Mother' &&
-                      member.sub_family_of === null && (
-                        <WheelImage
-                          className='parent24'
-                          member_image={member.member_image}
-                          name={member.name}
-                        />
-                      )}
-                    {member.member_as === 'Patriarch' && (
-                      <WheelImage
-                        className='rootpersonpatriarch'
-                        member_image={member.member_image}
-                        name={member.name}
-                      />
-                    )}
-                    {member.member_as === 'Matriarch' && (
-                      <WheelImage
-                        className='rootpersonmatriarch'
-                        member_image={member.member_image}
-                        name={member.name}
-                      />
-                    )}
-                    {(member.member_as === 'Son' || member.member_as === 'Daughter') && (
-                      <WheelImage
-                        // className={`rootperson120`}
-                        className={`rootperson1${1 + index2}`}
-                        member_image={member.member_image}
-                        name={member.name}
-                      />
-                    )}
-                  </div>
-                ))}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </div>
