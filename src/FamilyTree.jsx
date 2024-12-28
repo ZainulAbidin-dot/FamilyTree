@@ -38,7 +38,7 @@ function FamilyTreeApp() {
   return (
     <>
       <div className='my-4 carousel-container'>
-        <h3 className='mx-auto'>{formattedFamiliesData[index]?.family_name}</h3>
+        <h3 className='mx-auto'>{formattedFamiliesData[index]?.family_name.toUpperCase()}</h3>
 
         <Carousel
           fade
@@ -102,7 +102,7 @@ function FamilyTreeApp() {
                     )}
                     {(member.member_as === 'Son' || member.member_as === 'Daughter') && (
                       <CarouselImage
-                        className={`person${counter++}`}
+                        className={`person${member.order}`}
                         // className={`person20`}
                         member_image={member.member_image}
                         name={member.name}

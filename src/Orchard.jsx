@@ -59,7 +59,7 @@ const Orchard = () => {
 
   return (
     <div>
-      <h1 className='text-dark'>The Orchard</h1>
+      <h1 className='text-dark'>THE ORCHARD</h1>
       <div>
         <div className='grid-layout'>
           {reorderedFamily.map((family) => {
@@ -76,7 +76,7 @@ const Orchard = () => {
                 key={family.family_id}
               >
                 <p style={{ fontSize: '9px' }} className='h6 lead text-center m-0'>
-                  {family.family_name}
+                  {family.family_name.toUpperCase()}
                 </p>
                 <div className='rootTree m-0'>
                   {family.members.map((member, index2) => (
@@ -86,7 +86,7 @@ const Orchard = () => {
                           <WheelImage
                             className='parent3'
                             member_image={member.member_image}
-                            name={member.name}
+                            name={member.name.toUpperCase()}
                           />
                         )}
                       {member.member_as === 'Patriarch_Mother' &&
@@ -94,7 +94,7 @@ const Orchard = () => {
                           <WheelImage
                             className='parent4'
                             member_image={member.member_image}
-                            name={member.name}
+                            name={member.name.toUpperCase()}
                           />
                         )}
                       {member.member_as === 'Matriarch_Father' &&
@@ -102,7 +102,7 @@ const Orchard = () => {
                           <WheelImage
                             className='parent23'
                             member_image={member.member_image}
-                            name={member.name}
+                            name={member.name.toUpperCase()}
                           />
                         )}
                       {member.member_as === 'Matriarch_Mother' &&
@@ -110,29 +110,29 @@ const Orchard = () => {
                           <WheelImage
                             className='parent24'
                             member_image={member.member_image}
-                            name={member.name}
+                            name={member.name.toUpperCase()}
                           />
                         )}
                       {member.member_as === 'Patriarch' && (
                         <WheelImage
                           className='rootpersonpatriarch'
                           member_image={member.member_image}
-                          name={member.name}
+                          name={member.name.toUpperCase()}
                         />
                       )}
                       {member.member_as === 'Matriarch' && (
                         <WheelImage
                           className='rootpersonmatriarch'
                           member_image={member.member_image}
-                          name={member.name}
+                          name={member.name.toUpperCase()}
                         />
                       )}
                       {(member.member_as === 'Son' ||
                         member.member_as === 'Daughter') && (
                         <WheelImage
-                          className={`rootperson1${counter++}`}
+                          className={`rootperson1${member.order}`}
                           member_image={member.member_image}
-                          name={member.name}
+                          name={member.name.toUpperCase()}
                         />
                       )}
                     </div>

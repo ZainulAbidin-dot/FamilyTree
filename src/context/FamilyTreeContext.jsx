@@ -14,6 +14,7 @@ export function FamilyTreeProvider({ children }) {
     axiosClient
       .get('/family-tree', { signal: abortController.current.signal })
       .then((response) => {
+        console.log(response.data)
         const data = response.data;
         if (Array.isArray(data) === false) {
           alert('Invalid data format');

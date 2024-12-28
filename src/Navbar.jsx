@@ -55,18 +55,18 @@ const Navbar = () => {
 
         <div>
           <a className='navbar-brand' href='/'>
-            Family Tree
+            FAMILY TREE
           </a>
         </div>
         <ul className='navbar-nav d-flex flex-row gap-3'>
           <li className='nav-item'>
             <Link className='nav-link' to='/'>
-              The Trees
+              THE TREES
             </Link>
           </li>
           <li className='nav-item'>
             <Link className='nav-link' to='/orchard'>
-              The Orchard
+              THE ORCHARD
             </Link>
           </li>
           <li className='nav-item'>
@@ -76,7 +76,7 @@ const Navbar = () => {
               target='_blank'
               rel='noreferrer noopener'
             >
-              Yiddishe Nachas
+              YIDDISHE NACHAS
             </a>
           </li>
           <li>
@@ -85,7 +85,7 @@ const Navbar = () => {
               disabled={!audioFile}
               onClick={handleAudioButtonClick}
             >
-              {audioPlaying ? 'Pause' : 'Play'}
+              {audioPlaying ? 'PAUSE' : 'PLAY'}
             </button>
           </li>
         </ul>
