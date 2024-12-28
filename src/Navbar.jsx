@@ -20,13 +20,13 @@ const Navbar = () => {
         setAudioFile(URL.createObjectURL(audioBlob));
       })
       .catch((error) => {
-        console.error('Error fetching audio file:', error);
+        if (error.name !== 'CanceledError') {
+          console.error('Error fetching audio file:', error);
+        }
       });
 
     return () => {
-      abortController.current.abort
-        ? abortController.current.abort()
-        : abortController.current.abort();
+      abortController.current?.abort();
     };
   }, []);
 
@@ -65,7 +65,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link className='nav-link' to='/wheel'>
+            <Link className='nav-link' to='/orchard'>
               The Orchard
             </Link>
           </li>

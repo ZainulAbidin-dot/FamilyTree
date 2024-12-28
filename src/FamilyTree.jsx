@@ -1,11 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
-import { axiosClient, BACKEND_URL } from './axios-client';
 import { useNavigate } from 'react-router-dom';
+import { useFamilyTree } from './context/FamilyTreeContext';
 
 function FamilyTreeApp() {
-  const [familiesData, setFamiliesData] = React.useState([]);
+  const { familyTreeData, loading } = useFamilyTree();
   const [index, setIndex] = React.useState(0);
   const navigate = useNavigate();
 
@@ -16,21 +16,12 @@ function FamilyTreeApp() {
 
     if (selectedIndex === formattedFamiliesData.length - 1) {
       setTimeout(() => {
-        navigate('/wheel');
+        navigate('/orchard');
       }, 6000);
     }
   };
 
-  // Fetch families data
-  React.useEffect(() => {
-    async function fetchData() {
-      const { data } = await axiosClient.get('/families-with-members');
-      setFamiliesData(data);
-    }
-    fetchData();
-  }, []);
-
-  const formattedFamiliesData = familiesData?.filter((familyData) => {
+  const formattedFamiliesData = familyTreeData?.filter((familyData) => {
     let hasPatriarch = false;
     let hasMatriarch = false;
 
@@ -41,6 +32,8 @@ function FamilyTreeApp() {
 
     return hasPatriarch && hasMatriarch;
   });
+
+  if (loading) return <div>Loading...</div>;
 
   return (
     <>
@@ -58,66 +51,67 @@ function FamilyTreeApp() {
           {formattedFamiliesData.map((familyData, familyIndex) => {
             let counter = 1;
             return (
-            <Carousel.Item key={familyIndex} className='treecontainer'>
-              {familyData?.members?.map((member, index2) => (
-                <React.Fragment key={member.member_id}>
-                  {member.member_as === 'Patriarch_Father' &&
-                    member.sub_family_of === null && (
+              <Carousel.Item key={familyIndex} className='treecontainer'>
+                {familyData?.members?.map((member, index2) => (
+                  <React.Fragment key={member.member_id}>
+                    {member.member_as === 'Patriarch_Father' &&
+                      member.sub_family_of === null && (
+                        <CarouselImage
+                          className='parent1'
+                          member_image={member.member_image}
+                          name={member.name}
+                        />
+                      )}
+                    {member.member_as === 'Patriarch_Mother' &&
+                      member.sub_family_of === null && (
+                        <CarouselImage
+                          className='parent2'
+                          member_image={member.member_image}
+                          name={member.name}
+                        />
+                      )}
+                    {member.member_as === 'Matriarch_Father' &&
+                      member.sub_family_of === null && (
+                        <CarouselImage
+                          className='parent21'
+                          member_image={member.member_image}
+                          name={member.name}
+                        />
+                      )}
+                    {member.member_as === 'Matriarch_Mother' &&
+                      member.sub_family_of === null && (
+                        <CarouselImage
+                          className='parent22'
+                          member_image={member.member_image}
+                          name={member.name}
+                        />
+                      )}
+                    {member.member_as === 'Patriarch' && (
                       <CarouselImage
-                        className='parent1'
+                        className='personpatriarch'
                         member_image={member.member_image}
                         name={member.name}
                       />
                     )}
-                  {member.member_as === 'Patriarch_Mother' &&
-                    member.sub_family_of === null && (
+                    {member.member_as === 'Matriarch' && (
                       <CarouselImage
-                        className='parent2'
+                        className='personmatriarch'
                         member_image={member.member_image}
                         name={member.name}
                       />
                     )}
-                  {member.member_as === 'Matriarch_Father' &&
-                    member.sub_family_of === null && (
+                    {(member.member_as === 'Son' || member.member_as === 'Daughter') && (
                       <CarouselImage
-                        className='parent21'
+                        className={`person${counter++}`}
+                        // className={`person20`}
                         member_image={member.member_image}
                         name={member.name}
                       />
                     )}
-                  {member.member_as === 'Matriarch_Mother' &&
-                    member.sub_family_of === null && (
-                      <CarouselImage
-                        className='parent22'
-                        member_image={member.member_image}
-                        name={member.name}
-                      />
-                    )}
-                  {member.member_as === 'Patriarch' && (
-                    <CarouselImage
-                      className='personpatriarch'
-                      member_image={member.member_image}
-                      name={member.name}
-                    />
-                  )}
-                  {member.member_as === 'Matriarch' && (
-                    <CarouselImage
-                      className='personmatriarch'
-                      member_image={member.member_image}
-                      name={member.name}
-                    />
-                  )}
-                  {(member.member_as === 'Son' || member.member_as === 'Daughter') && (
-                    <CarouselImage
-                      className={`person${counter++}`}
-                      // className={`person20`}
-                      member_image={member.member_image}
-                      name={member.name}
-                    />
-                  )}
-                </React.Fragment>
-              ))}
-            </Carousel.Item>)
+                  </React.Fragment>
+                ))}
+              </Carousel.Item>
+            );
           })}
         </Carousel>
       </div>
@@ -131,16 +125,12 @@ function CarouselImage(props) {
   return (
     <img
       className={className}
-      src={
-        member_image.startsWith('data:image')
-          ? member_image
-          : `${BACKEND_URL}/${member_image}` ||
-            'https://randomuser.me/api/portraits/women/64.jpg'
-      }
+      src={member_image}
       alt={name}
       data-bs-toggle='tooltip'
       data-bs-placement='top'
       title={name}
+      loading='lazy'
       style={{
         position: 'absolute',
         borderRadius: '50%',
