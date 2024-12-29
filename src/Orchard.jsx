@@ -29,7 +29,7 @@ const Orchard = () => {
     'Sholom & Rochel',
     'Mayer Moshe & Esther Toby',
     'Aba & Ema',
-    'M.M & Sara',
+    'M.M. & Sara',
     'Avrohom Shimon & Shani',
     'Chaim Tzvi & Yehudis',
     'Tzvi & Rivky',
