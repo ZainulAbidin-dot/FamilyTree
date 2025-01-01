@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { axiosClient } from './axios-client';
+import { axiosClient, BACKEND_URL } from './axios-client';
 
 const Navbar = () => {
-  const [audioFile, setAudioFile] = useState(null);
+  const [songs, setSongs] = useState([]);
+  const [activeSongIndex, setActiveSongIndex] = useState(0);
   const [audioPlaying, setAudioPlaying] = useState(false);
 
   const abortController = useRef();
@@ -11,23 +12,30 @@ const Navbar = () => {
 
   useEffect(() => {
     abortController.current = new AbortController();
-    const signal = abortController.current.signal;
-
     axiosClient
-      .get('/songs/selected', { responseType: 'blob', signal })
+      .get('/songs/selected', { signal: abortController.current.signal })
       .then((response) => {
-        const audioBlob = new Blob([response.data], { type: 'audio/mpeg' });
-        setAudioFile(URL.createObjectURL(audioBlob));
+        const data = response.data;
+        if (Array.isArray(data) === false) {
+          alert('Invalid data format');
+          setSongs([]);
+        } else {
+          const formattedSongs = data.map((song) => {
+            return {
+              ...song,
+              url: `${BACKEND_URL}/${song.url}`,
+            };
+          });
+          setSongs(formattedSongs);
+          setActiveSongIndex(0);
+        }
       })
       .catch((error) => {
         if (error.name !== 'CanceledError') {
-          console.error('Error fetching audio file:', error);
+          console.error('Error fetching songs:', error);
+          setSongs([]);
         }
       });
-
-    return () => {
-      abortController.current?.abort();
-    };
   }, []);
 
   function handleAudioButtonClick() {
@@ -40,17 +48,38 @@ const Navbar = () => {
     }
   }
 
+  function handleAudioPlay() {
+    console.log('Song started');
+    setAudioPlaying(true);
+  }
+
+  function handleAudioPause() {
+    console.log('Song paused');
+    setAudioPlaying(false);
+  }
+
+  function handleAudioEnded() {
+    // ended event is not fired when the song is set to loop
+    // when a song ends, first pause event is fired, then ended event
+    console.log('Song ended');
+    // update the active song index
+    setActiveSongIndex((prev) => {
+      return prev + 1 >= songs.length ? 0 : prev + 1;
+    });    
+  }
+
   return (
     <nav className='navbar navbar-light bg-light | app-navbar'>
       <div className='container-fluid d-flex justify-content-between'>
         <audio
           ref={audioElementRef}
           autoPlay={true}
-          loop={true}
-          src={audioFile}
+          loop={songs.length === 1} // only loop if there's only one song
+          src={songs[activeSongIndex]?.url}
           className='sr-only'
-          onPlay={() => setAudioPlaying(true)}
-          onPause={() => setAudioPlaying(false)}
+          onPlay={handleAudioPlay}
+          onPause={handleAudioPause}
+          onEnded={handleAudioEnded}
         />
 
         <div>
@@ -82,7 +111,7 @@ const Navbar = () => {
           <li>
             <button
               className='btn btn-success'
-              disabled={!audioFile}
+              disabled={!songs.length}
               onClick={handleAudioButtonClick}
             >
               {audioPlaying ? 'PAUSE' : 'PLAY'}
