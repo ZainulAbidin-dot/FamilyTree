@@ -84,7 +84,7 @@ const Orchard = () => {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div style={{ height: '90vh', position: 'relative' }}>
+    <div>
       <h1 className='text-dark'>THE ORCHARD</h1>
       <div className='grid-layout'>
         {families.map((family, index) => {
@@ -201,7 +201,7 @@ function OrchardImage(props) {
 }
 
 const activeFamilyTreeStyles = {
-  position: 'absolute',
+  position: 'fixed',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%) scale(4)',
