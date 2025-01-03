@@ -273,11 +273,6 @@
   top: 83%;
   left: 30%;
 }
-
-.groupTree {
-  /* width: 80vw; */
-}
-
 .rootTree {
   min-width: 200px;
   max-width: 700px;
@@ -530,8 +525,6 @@
   overflow: visible !important;
 }
 
-
-
 .grid-layout {
   padding: 0rem 1rem;
   /* height: 100vh; */
@@ -542,7 +535,6 @@
   grid-template-rows: repeat(3, 1fr);
   gap: 1rem;
   place-content: center;
-
 }
 
 .grid-item {
@@ -589,7 +581,7 @@
 
 .grid-item:nth-child(7) {
   grid-row: 2;
-  grid-column: 2;  
+  grid-column: 2;
   margin-left: -15rem;
 }
 
