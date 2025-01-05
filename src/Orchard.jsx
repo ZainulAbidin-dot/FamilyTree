@@ -11,7 +11,7 @@ const Orchard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const INTERVAL_DURATION = 10 * 1000; // 10 seconds
+    const INTERVAL_DURATION = 3 * 1000; // 10 seconds
 
     if (!familyIds.length) return;
 
