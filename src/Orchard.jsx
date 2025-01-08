@@ -10,36 +10,71 @@ const Orchard = () => {
 
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   const INTERVAL_DURATION = 10 * 1000; // 10 seconds
+
+  //   if (!familyIds.length) return;
+
+  //   // If the user has interrupted the interval, clear it.
+  //   // Otherwise, set a new interval.
+  //   if (userInterruptRef.current) {
+  //     if (intervalRef.current) clearInterval(intervalRef.current);
+  //     return;
+  //   }
+
+  //   intervalRef.current = setInterval(() => {
+  //     const currentIndex = activeFamilyIndex ?? 0;
+  //     const nextIndex = (currentIndex + 1) % familyIds.length;
+
+  //     console.log({ currentIndex, nextIndex });
+
+  //     if (nextIndex === 0) {
+  //       navigate('/');
+  //     } else {
+  //       setActiveFamilyIndex(nextIndex);
+  //     }
+  //   }, INTERVAL_DURATION);
+
+  //   return () => {
+  //     clearInterval(intervalRef.current);
+  //   };
+  // }, [userInterruptRef.current, familyIds]);
+
   useEffect(() => {
-    const INTERVAL_DURATION = 3 * 1000; // 10 seconds
-
+    const INTERVAL_DURATION = 10 * 1000; // 10 seconds
+    const PAUSE_DURATION = 3 * 1000; // 3 seconds pause
+  
     if (!familyIds.length) return;
-
+  
     // If the user has interrupted the interval, clear it.
     // Otherwise, set a new interval.
     if (userInterruptRef.current) {
       if (intervalRef.current) clearInterval(intervalRef.current);
       return;
     }
-
-    intervalRef.current = setInterval(() => {
-      const currentIndex = activeFamilyIndex ?? 0;
-      const nextIndex = (currentIndex + 1) % familyIds.length;
-
-      console.log({ currentIndex, nextIndex });
-
-      if (nextIndex === 0) {
-        navigate('/');
-      } else {
-        setActiveFamilyIndex(nextIndex);
-      }
-    }, INTERVAL_DURATION);
-
+  
+    const timeoutRef = setTimeout(() => {
+      intervalRef.current = setInterval(() => {
+        const currentIndex = activeFamilyIndex ?? 0;
+        const nextIndex = (currentIndex + 1) % familyIds.length;
+  
+        console.log({ currentIndex, nextIndex });
+  
+        if (nextIndex === 0) {
+          navigate('/');
+        } else {
+          setActiveFamilyIndex(nextIndex);
+        }
+      }, INTERVAL_DURATION);
+    }, PAUSE_DURATION);
+  
+    // Cleanup function
     return () => {
+      clearTimeout(timeoutRef);
       clearInterval(intervalRef.current);
     };
   }, [userInterruptRef.current, familyIds]);
-
+  
   useEffect(() => {
     function handleKeyDown(event) {
       if (activeFamilyIndex === null) return;
