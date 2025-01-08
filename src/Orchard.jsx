@@ -41,7 +41,8 @@ const Orchard = () => {
   // }, [userInterruptRef.current, familyIds]);
 
   useEffect(() => {
-    const INTERVAL_DURATION = 3 * 1000; // 3 seconds
+    const INTERVAL_DURATION = 10 * 1000; // 10 seconds
+    const PAUSE_DURATION = 3 * 1000; // 3 seconds
 
     if (!familyIds.length) return;
   
