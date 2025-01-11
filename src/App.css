@@ -539,12 +539,14 @@
 
 .grid-item {
   background-color: transparent;
-  /* border: 1px solid black; */
   padding: -1rem 1rem;
   font-size: 2rem;
+  cursor: pointer;
+  background-color: transparent;
 
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .grid-item:nth-child(1) {
@@ -636,4 +638,49 @@
 .grid-item:nth-child(17) {
   grid-row: 3;
   grid-column: 6;
+}
+
+@keyframes zoomIn {
+  0%{
+    position: static;
+    top: 0;
+    left: 0;
+    transform: translate(0%, 0%) scale(1);
+    z-index: 0;
+    background-color: transparent;
+  }
+  1%{
+    position: fixed;
+  }
+  100% {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(4);
+    z-index: 10;
+    background-color: white;
+    margin: auto;
+  }
+}
+
+@keyframes zoomOut {
+  0% {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(4);
+    z-index: 10;
+    background-color: white;
+  }
+  99% {
+    position: fixed;
+  }
+  100% {
+    position: static;
+    top: 0;
+    left: 0;
+    transform: translate(0%, 0%) scale(1);
+    z-index: 0;
+    background-color: transparent;
+  }
 }

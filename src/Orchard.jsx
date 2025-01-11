@@ -1,79 +1,91 @@
-import React, { useState, useEffect, useRef, act } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useFamilyTree } from './context/FamilyTreeContext';
 import { useNavigate } from 'react-router-dom';
+import { usePreviousState } from './hooks/use-previous-state';
 
 const Orchard = () => {
   const { families, familyIds, loading } = useOrchard();
-  const [activeFamilyIndex, setActiveFamilyIndex] = useState(0);
+  const [activeFamilyIndex, setActiveFamilyIndex, previousActiveFamilyIndex] = usePreviousState(0);
+  const [windowFocused, setWindowFocused] = useState(true);
   const intervalRef = useRef();
+  const timeoutRef = useRef();
+  const loopCompleteRef = useRef(false);
   const userInterruptRef = useRef(false);
-
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const INTERVAL_DURATION = 10 * 1000; // 10 seconds
+  const INTERVAL_DURATION = 10 * 1000; // 10 seconds
+  const PAUSE_DURATION = 3 * 1000; // 3 seconds
+  const ANIMATION_DURATION = 700; // 700 milliseconds
 
-  //   if (!familyIds.length) return;
-
-  //   // If the user has interrupted the interval, clear it.
-  //   // Otherwise, set a new interval.
-  //   if (userInterruptRef.current) {
-  //     if (intervalRef.current) clearInterval(intervalRef.current);
-  //     return;
-  //   }
-
-  //   intervalRef.current = setInterval(() => {
-  //     const currentIndex = activeFamilyIndex ?? 0;
-  //     const nextIndex = (currentIndex + 1) % familyIds.length;
-
-  //     console.log({ currentIndex, nextIndex });
-
-  //     if (nextIndex === 0) {
-  //       navigate('/');
-  //     } else {
-  //       setActiveFamilyIndex(nextIndex);
-  //     }
-  //   }, INTERVAL_DURATION);
-
-  //   return () => {
-  //     clearInterval(intervalRef.current);
-  //   };
-  // }, [userInterruptRef.current, familyIds]);
+  const familyIdsLength = familyIds.length;
 
   useEffect(() => {
-    const INTERVAL_DURATION = 10 * 1000; // 10 seconds
-    const PAUSE_DURATION = 3 * 1000; // 3 seconds
+    if (!familyIdsLength) return;
 
-    if (!familyIds.length) return;
-  
+    if (loopCompleteRef.current) return;
+
     // If the user has interrupted the interval, clear it.
-    // Otherwise, set a new interval.
-    if (userInterruptRef.current) {
-      if (intervalRef.current) clearInterval(intervalRef.current);
+    if(userInterruptRef.current && intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    // If the window is not focused, clear the interval.
+    if(!windowFocused) {
+      if(intervalRef.current) clearInterval(intervalRef.current);
+    }
+
+    // If the user has interrupted the interval, or the window is not focused, do nothing.
+    if(!windowFocused || userInterruptRef.current) {
       return;
     }
-  
-    const timeoutRef = setTimeout(() => {
-      intervalRef.current = setInterval(() => {
-        const currentIndex = activeFamilyIndex ?? 0;
-        const nextIndex = (currentIndex + 1) % familyIds.length;
-  
-        console.log({ currentIndex, nextIndex });
-  
-        if (nextIndex === 0) {
-          navigate('/');
-        } else {
-          setActiveFamilyIndex(nextIndex);
-        }
-      }, INTERVAL_DURATION);
-    }, PAUSE_DURATION);
-  
-    // Cleanup function
+
+    intervalRef.current = setInterval(() => {
+      const currentIndex = activeFamilyIndex ?? 0;
+      const nextIndex = (currentIndex + 1) % familyIdsLength;
+
+      console.log({ currentIndex, nextIndex });    
+
+      if (nextIndex === 0) {
+        loopCompleteRef.current = true;
+        setActiveFamilyIndex(-1);
+      } else {
+       setActiveFamilyIndex(nextIndex);
+      }
+    }, INTERVAL_DURATION + PAUSE_DURATION); // pause is handled in css animation.
+
     return () => {
-      clearTimeout(timeoutRef);
       clearInterval(intervalRef.current);
     };
-  }, [userInterruptRef.current, familyIds]);
+  }, [familyIdsLength, intervalRef.current, userInterruptRef.current, loopCompleteRef.current, windowFocused]);
+
+  useEffect(() => {
+    function handleVisibilityChange() {
+      if (document.visibilityState === 'visible') {
+        setWindowFocused(true);
+      } else {
+        setWindowFocused(false);
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    if(!loopCompleteRef.current) return;
+
+    timeoutRef.current = setTimeout(() => {
+      navigate('/');
+    }, PAUSE_DURATION);
+
+    return () => {
+      clearTimeout(timeoutRef.current);
+    };
+  }, [loopCompleteRef.current]);
+
   
   useEffect(() => {
     function handleKeyDown(event) {
@@ -126,13 +138,16 @@ const Orchard = () => {
           return (
             <div
               onClick={(e) => handleFamilyTreeClick(e, index)}
-              className='grid-item d-flex flex-column align-items-center'
+              className='grid-item'
               key={family.family_id}
               style={
                 activeFamilyIndex === index
-                  ? activeFamilyTreeStyles
-                  : defaultFamilyTreeStyles
+                  ? {animation: 'zoomIn 700ms ease-in forwards', animationDelay: userInterruptRef.current ? '0ms' : `${PAUSE_DURATION}ms`}
+                  : previousActiveFamilyIndex === index
+                    ? {animation: 'zoomOut 700ms ease-in forwards'}
+                    : null
               }
+              
             >
               <p style={{ fontSize: '9px' }} className='h6 lead text-center m-0'>
                 {family.family_name.toUpperCase()}
@@ -234,29 +249,6 @@ function OrchardImage(props) {
     />
   );
 }
-
-const activeFamilyTreeStyles = {
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%) scale(4)',
-  zIndex: '10',
-  cursor: 'pointer',
-  backgroundColor: 'white',
-  margin: 'auto',
-  transition: 'transform 0.7s ease-in-out, top 0.7s ease-in-out, left 0.7s ease-in-out',
-};
-
-const defaultFamilyTreeStyles = {
-  position: '',
-  top: '',
-  left: '',
-  transform: 'scale(1)',
-  zIndex: '',
-  cursor: 'pointer',
-  backgroundColor: 'transparent',
-  transition: 'transform 0.7s ease-in-out, top 0.7s ease-in-out, left 0.7s ease-in-out',
-};
 
 function useOrchard() {
   const { familyTreeData, loading } = useFamilyTree();
