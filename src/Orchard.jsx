@@ -142,9 +142,9 @@ const Orchard = () => {
               key={family.family_id}
               style={
                 activeFamilyIndex === index
-                  ? {animation: 'zoomIn 700ms ease-in forwards', animationDelay: userInterruptRef.current ? '0ms' : `${PAUSE_DURATION}ms`}
+                  ? {animation: `zoomIn ${ANIMATION_DURATION}ms ease-in forwards`, animationDelay: userInterruptRef.current ? '0ms' : `${PAUSE_DURATION}ms`}
                   : previousActiveFamilyIndex === index
-                    ? {animation: 'zoomOut 700ms ease-in forwards'}
+                    ? {animation: `zoomOut ${ANIMATION_DURATION}ms ease-in forwards`}
                     : null
               }
               
