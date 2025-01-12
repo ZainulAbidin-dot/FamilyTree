@@ -29,8 +29,8 @@ export function CounterWithPreviousState() {
     <div>
       <p>Count: {count}</p>
       <p>Previous Count: {previousCount}</p>
-      <button onClick={() => setCount(previousCount + 1)}>Increment</button>
-      <button onClick={() => setCount(previousCount - 1)}>Decrement</button>
+      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
+      <button onClick={() => setCount((c) => c - 1)}>Decrement</button>
     </div>
   );
 }
