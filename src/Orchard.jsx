@@ -5,7 +5,8 @@ import { usePreviousState } from './hooks/use-previous-state';
 
 const Orchard = () => {
   const { families, familyIds, loading } = useOrchard();
-  const [activeFamilyIndex, setActiveFamilyIndex, previousActiveFamilyIndex] = usePreviousState(0);
+  const [activeFamilyIndex, setActiveFamilyIndex, previousActiveFamilyIndex] =
+    usePreviousState(0);
   const [windowFocused, setWindowFocused] = useState(true);
   const intervalRef = useRef();
   const timeoutRef = useRef();
@@ -25,17 +26,17 @@ const Orchard = () => {
     if (loopCompleteRef.current) return;
 
     // If the user has interrupted the interval, clear it.
-    if(userInterruptRef.current && intervalRef.current) {
+    if (userInterruptRef.current && intervalRef.current) {
       clearInterval(intervalRef.current);
     }
 
     // If the window is not focused, clear the interval.
-    if(!windowFocused) {
-      if(intervalRef.current) clearInterval(intervalRef.current);
+    if (!windowFocused) {
+      if (intervalRef.current) clearInterval(intervalRef.current);
     }
 
     // If the user has interrupted the interval, or the window is not focused, do nothing.
-    if(!windowFocused || userInterruptRef.current) {
+    if (!windowFocused || userInterruptRef.current) {
       return;
     }
 
@@ -43,20 +44,26 @@ const Orchard = () => {
       const currentIndex = activeFamilyIndex ?? 0;
       const nextIndex = (currentIndex + 1) % familyIdsLength;
 
-      console.log({ currentIndex, nextIndex });    
+      console.log({ currentIndex, nextIndex });
 
       if (nextIndex === 0) {
         loopCompleteRef.current = true;
         setActiveFamilyIndex(-1);
       } else {
-       setActiveFamilyIndex(nextIndex);
+        setActiveFamilyIndex(nextIndex);
       }
     }, INTERVAL_DURATION + PAUSE_DURATION); // pause is handled in css animation.
 
     return () => {
       clearInterval(intervalRef.current);
     };
-  }, [familyIdsLength, intervalRef.current, userInterruptRef.current, loopCompleteRef.current, windowFocused]);
+  }, [
+    familyIdsLength,
+    intervalRef.current,
+    userInterruptRef.current,
+    loopCompleteRef.current,
+    windowFocused,
+  ]);
 
   useEffect(() => {
     function handleVisibilityChange() {
@@ -75,7 +82,7 @@ const Orchard = () => {
   }, []);
 
   useEffect(() => {
-    if(!loopCompleteRef.current) return;
+    if (!loopCompleteRef.current) return;
 
     timeoutRef.current = setTimeout(() => {
       navigate('/');
@@ -86,7 +93,6 @@ const Orchard = () => {
     };
   }, [loopCompleteRef.current]);
 
-  
   useEffect(() => {
     function handleKeyDown(event) {
       if (activeFamilyIndex === null) return;
@@ -142,12 +148,16 @@ const Orchard = () => {
               key={family.family_id}
               style={
                 activeFamilyIndex === index
-                  ? {animation: `zoomIn ${ANIMATION_DURATION}ms ease-in forwards`, animationDelay: userInterruptRef.current ? '0ms' : `${PAUSE_DURATION}ms`}
+                  ? {
+                      animation: `zoomIn ${ANIMATION_DURATION}ms ease-in forwards`,
+                      animationDelay: userInterruptRef.current
+                        ? '0ms'
+                        : `${PAUSE_DURATION}ms`,
+                    }
                   : previousActiveFamilyIndex === index
-                    ? {animation: `zoomOut ${ANIMATION_DURATION}ms ease-in forwards`}
-                    : null
+                  ? { animation: `zoomOut ${ANIMATION_DURATION}ms ease-in forwards` }
+                  : null
               }
-              
             >
               <p style={{ fontSize: '9px' }} className='h6 lead text-center m-0'>
                 {family.family_name.toUpperCase()}
@@ -252,39 +262,10 @@ function OrchardImage(props) {
 
 function useOrchard() {
   const { familyTreeData, loading } = useFamilyTree();
-  const familyOrderArr = [
-    'Rephael & Henny',
-    'Dovi & Chava',
-    'Moshe & Sarala',
-    'Yaakov Ben-Tzion & Rivky',
-    'Yitzy & Perel Bracha',
-    'Moshe Eliyahu & Ahuva',
-    'Sholom & Rochel',
-    'Mayer Moshe & Esther Toby',
-    'Aba & Ema',
-    'M.M. & Sara',
-    'Avrohom Shimon & Shani',
-    'Chaim Tzvi & Yehudis',
-    'Tzvi & Rivky',
-    'Eli & Tzivi',
-    'Chaim & Chaya Deena',
-    'Avrohom Tzvi & Leah',
-    'Chaim & Rochela',
-  ];
 
-  const reorderedFamily = [];
+  const familyIds = familyTreeData.map((family) => family.family_id);
 
-  familyOrderArr.forEach((orderedFamilyName) =>
-    familyTreeData.map((family) => {
-      if (orderedFamilyName == family.family_name) {
-        reorderedFamily.push(family);
-      }
-    })
-  );
-
-  const familyIds = reorderedFamily.map((family) => family.family_id);
-
-  return { families: reorderedFamily, familyIds, loading };
+  return { families: familyTreeData, familyIds, loading };
 }
 
 export default Orchard;
