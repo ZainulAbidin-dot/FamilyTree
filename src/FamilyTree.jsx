@@ -26,8 +26,8 @@ function FamilyTreeApp() {
     let hasMatriarch = false;
 
     familyData.members?.forEach((member) => {
-      if (member.member_as === 'Patriarch') hasPatriarch = true;
-      if (member.member_as === 'Matriarch') hasMatriarch = true;
+      if (member.memberAs === 'Patriarch') hasPatriarch = true;
+      if (member.memberAs === 'Matriarch') hasMatriarch = true;
     });
 
     return hasPatriarch && hasMatriarch;
@@ -38,7 +38,7 @@ function FamilyTreeApp() {
   return (
     <>
       <div className='my-4 carousel-container'>
-        <h3 className='mx-auto'>{formattedFamiliesData[index]?.family_name.toUpperCase()}</h3>
+        <h3 className='mx-auto'>{formattedFamiliesData[index]?.familyName.toUpperCase()}</h3>
 
         <Carousel
           fade
@@ -53,58 +53,58 @@ function FamilyTreeApp() {
             return (
               <Carousel.Item key={familyIndex} className='treecontainer'>
                 {familyData?.members?.map((member, index2) => (
-                  <React.Fragment key={member.member_id}>
-                    {member.member_as === 'Patriarch_Father' &&
-                      member.sub_family_of === null && (
+                  <React.Fragment key={member.memberId}>
+                    {member.memberAs === 'Patriarch_Father' &&
+                      member.subFamilyOf === null && (
                         <CarouselImage
                           className='parent1'
-                          member_image={member.member_image}
+                          memberImage={member.memberImage}
                           name={member.name}
                         />
                       )}
-                    {member.member_as === 'Patriarch_Mother' &&
-                      member.sub_family_of === null && (
+                    {member.memberAs === 'Patriarch_Mother' &&
+                      member.subFamilyOf === null && (
                         <CarouselImage
                           className='parent2'
-                          member_image={member.member_image}
+                          memberImage={member.memberImage}
                           name={member.name}
                         />
                       )}
-                    {member.member_as === 'Matriarch_Father' &&
-                      member.sub_family_of === null && (
+                    {member.memberAs === 'Matriarch_Father' &&
+                      member.subFamilyOf === null && (
                         <CarouselImage
                           className='parent21'
-                          member_image={member.member_image}
+                          memberImage={member.memberImage}
                           name={member.name}
                         />
                       )}
-                    {member.member_as === 'Matriarch_Mother' &&
-                      member.sub_family_of === null && (
+                    {member.memberAs === 'Matriarch_Mother' &&
+                      member.subFamilyOf === null && (
                         <CarouselImage
                           className='parent22'
-                          member_image={member.member_image}
+                          memberImage={member.memberImage}
                           name={member.name}
                         />
                       )}
-                    {member.member_as === 'Patriarch' && (
+                    {member.memberAs === 'Patriarch' && (
                       <CarouselImage
                         className='personpatriarch'
-                        member_image={member.member_image}
+                        memberImage={member.memberImage}
                         name={member.name}
                       />
                     )}
-                    {member.member_as === 'Matriarch' && (
+                    {member.memberAs === 'Matriarch' && (
                       <CarouselImage
                         className='personmatriarch'
-                        member_image={member.member_image}
+                        memberImage={member.memberImage}
                         name={member.name}
                       />
                     )}
-                    {(member.member_as === 'Son' || member.member_as === 'Daughter') && (
+                    {(member.memberAs === 'Son' || member.memberAs === 'Daughter') && (
                       <CarouselImage
                         className={`person${member.order}`}
                         // className={`person20`}
-                        member_image={member.member_image}
+                        memberImage={member.memberImage}
                         name={member.name}
                       />
                     )}
@@ -120,12 +120,12 @@ function FamilyTreeApp() {
 }
 
 function CarouselImage(props) {
-  const { className, member_image, name } = props;
+  const { className, memberImage, name } = props;
 
   return (
     <img
       className={className}
-      src={member_image}
+      src={memberImage}
       alt={name}
       data-bs-toggle='tooltip'
       data-bs-placement='top'

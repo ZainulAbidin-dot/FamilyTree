@@ -145,7 +145,7 @@ const Orchard = () => {
             <div
               onClick={(e) => handleFamilyTreeClick(e, index)}
               className='grid-item'
-              key={family.family_id}
+              key={family.familyId}
               style={
                 activeFamilyIndex === index
                   ? {
@@ -160,61 +160,61 @@ const Orchard = () => {
               }
             >
               <p style={{ fontSize: '9px' }} className='h6 lead text-center m-0'>
-                {family.family_name.toUpperCase()}
+                {family.familyName.toUpperCase()}
               </p>
               <div className='rootTree m-0'>
                 {family.members.map((member) => (
-                  <div key={member.member_id} className='mb-2 text-center'>
-                    {member.member_as === 'Patriarch_Father' &&
-                      member.sub_family_of === null && (
+                  <div key={member.memberId} className='mb-2 text-center'>
+                    {member.memberAs === 'Patriarch_Father' &&
+                      member.subFamilyOf === null && (
                         <OrchardImage
                           className='parent3'
-                          member_image={member.member_image}
+                          memberImage={member.memberImage}
                           name={member.name.toUpperCase()}
                         />
                       )}
-                    {member.member_as === 'Patriarch_Mother' &&
-                      member.sub_family_of === null && (
+                    {member.memberAs === 'Patriarch_Mother' &&
+                      member.subFamilyOf === null && (
                         <OrchardImage
                           className='parent4'
-                          member_image={member.member_image}
+                          memberImage={member.memberImage }
                           name={member.name.toUpperCase()}
                         />
                       )}
-                    {member.member_as === 'Matriarch_Father' &&
-                      member.sub_family_of === null && (
+                    {member.memberAs === 'Matriarch_Father' &&
+                      member.subFamilyOf === null && (
                         <OrchardImage
                           className='parent23'
-                          member_image={member.member_image}
+                          memberImage={member.memberImage}
                           name={member.name.toUpperCase()}
                         />
                       )}
-                    {member.member_as === 'Matriarch_Mother' &&
-                      member.sub_family_of === null && (
+                    {member.memberAs === 'Matriarch_Mother' &&
+                      member.subFamilyOf === null && (
                         <OrchardImage
                           className='parent24'
-                          member_image={member.member_image}
+                          memberImage={member.memberImage}
                           name={member.name.toUpperCase()}
                         />
                       )}
-                    {member.member_as === 'Patriarch' && (
+                    {member.memberAs === 'Patriarch' && (
                       <OrchardImage
                         className='rootpersonpatriarch'
-                        member_image={member.member_image}
+                        memberImage={member.memberImage}
                         name={member.name.toUpperCase()}
                       />
                     )}
-                    {member.member_as === 'Matriarch' && (
+                    {member.memberAs === 'Matriarch' && (
                       <OrchardImage
                         className='rootpersonmatriarch'
-                        member_image={member.member_image}
+                        memberImage={member.memberImage}
                         name={member.name.toUpperCase()}
                       />
                     )}
-                    {(member.member_as === 'Son' || member.member_as === 'Daughter') && (
+                    {(member.memberAs === 'Son' || member.memberAs === 'Daughter') && (
                       <OrchardImage
                         className={`rootperson1${member.order}`}
-                        member_image={member.member_image}
+                        memberImage={member.memberImage}
                         name={member.name.toUpperCase()}
                       />
                     )}
@@ -230,12 +230,12 @@ const Orchard = () => {
 };
 
 function OrchardImage(props) {
-  const { className, member_image, name } = props;
+  const { className, memberImage, name } = props;
 
   return (
     <img
       className={className}
-      src={member_image}
+      src={memberImage}
       alt={name}
       data-bs-toggle='tooltip'
       data-bs-placement='top'
@@ -263,7 +263,7 @@ function OrchardImage(props) {
 function useOrchard() {
   const { familyTreeData, loading } = useFamilyTree();
 
-  const familyIds = familyTreeData.map((family) => family.family_id);
+  const familyIds = familyTreeData.map((family) => family.familyId);
 
   return { families: familyTreeData, familyIds, loading };
 }

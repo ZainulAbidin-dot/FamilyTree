@@ -26,7 +26,7 @@ export function FamilyTreeProvider({ children }) {
               members: family.members.map((member) => {
                 return {
                   ...member,
-                  member_image: `${BACKEND_URL}/${member.member_image}`,
+                  memberImage: `${BACKEND_URL}/${member.memberImage}`,
                 };
               }),
             };
