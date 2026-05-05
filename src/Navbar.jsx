@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { axiosClient, BACKEND_URL } from './axios-client';
+import { axiosClient } from './axios-client';
 
 const Navbar = () => {
   const [songs, setSongs] = useState([]);
@@ -20,13 +20,7 @@ const Navbar = () => {
           alert('Invalid data format');
           setSongs([]);
         } else {
-          const formattedSongs = data.map((song) => {
-            return {
-              ...song,
-              url: `${BACKEND_URL}/${song.url}`,
-            };
-          });
-          setSongs(formattedSongs);
+          setSongs(data);
           setActiveSongIndex(0);
         }
       })
@@ -65,7 +59,7 @@ const Navbar = () => {
     // update the active song index
     setActiveSongIndex((prev) => {
       return prev + 1 >= songs.length ? 0 : prev + 1;
-    });    
+    });
   }
 
   return (
@@ -109,11 +103,7 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <button
-              className='btn btn-success'
-              disabled={!songs.length}
-              onClick={handleAudioButtonClick}
-            >
+            <button className='btn btn-success' disabled={!songs.length} onClick={handleAudioButtonClick}>
               {audioPlaying ? 'PAUSE' : 'PLAY'}
             </button>
           </li>

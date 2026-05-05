@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, useRef } from 'react';
-import { axiosClient, BACKEND_URL } from '../axios-client';
+import { axiosClient } from '../axios-client';
 
 const FamilyTreeContext = createContext(null);
 
@@ -14,24 +14,13 @@ export function FamilyTreeProvider({ children }) {
     axiosClient
       .get('/family-tree', { signal: abortController.current.signal })
       .then((response) => {
-        console.log(response.data)
+        console.log(response.data);
         const data = response.data;
         if (Array.isArray(data) === false) {
           alert('Invalid data format');
           setFamilyTreeData([]);
         } else {
-          const formattedFamilyTreeData = data.map((family) => {
-            return {
-              ...family,
-              members: family.members.map((member) => {
-                return {
-                  ...member,
-                  memberImage: `${BACKEND_URL}/${member.memberImage}`,
-                };
-              }),
-            };
-          });
-          setFamilyTreeData(formattedFamilyTreeData);
+          setFamilyTreeData(data);
         }
       })
       .catch((error) => {
@@ -48,11 +37,7 @@ export function FamilyTreeProvider({ children }) {
     };
   }, []);
 
-  return (
-    <FamilyTreeContext.Provider value={{ familyTreeData, loading }}>
-      {children}
-    </FamilyTreeContext.Provider>
-  );
+  return <FamilyTreeContext.Provider value={{ familyTreeData, loading }}>{children}</FamilyTreeContext.Provider>;
 }
 
 export function useFamilyTree() {
